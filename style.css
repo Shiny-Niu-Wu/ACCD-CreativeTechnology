@@ -2,7 +2,25 @@ body{
   font-family: Helvetica;
 }
 
+.wrapper{
+  padding: 3em;
+}
+
+a{
+  
+}
+
 p::selection{
   background-color: black;
   color: orange;
+}
+
+.parts{
+  width: 50%;
+  padding: 3em;
+}
+
+.quotes{
+  color: #cccccc;
+  padding-left: 1em;
 }
