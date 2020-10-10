@@ -2,6 +2,27 @@ body{
   font-family: Helvetica;
 }
 
+#myName{
+  transform: rotate(90deg);
+  position: fixed;
+  top: 200px;
+  right: -297px;
+  font-size: 4.3em;
+  font-weight: 900;
+}
+
+#pageDescription{
+  transform: rotate(90deg);
+  font-weight: lighter;
+  position: fixed;
+  top: 250px;
+  right: -150px;
+}
+
+span{
+  font-weight: bold;
+}
+
 .wrapper{
   padding: 3em;
 }
@@ -16,7 +37,7 @@ p::selection{
 }
 
 .parts{
-  width: 50%;
+  width: 60%;
   padding: 3em;
   margin-bottom: 1em;
   border: solid #eeeeee 3px;
@@ -25,4 +46,8 @@ p::selection{
 .quotes{
   color: #cccccc;
   padding-left: 1em;
+}
+
+h4{
+  color: #cccccc;
 }

@@ -6,44 +6,58 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <!-- to-do: make week page component -->
+    <p id="myName">Shiny Shuan-Yi Wu</p>
+    <p id="pageDescription">a documentation site for <span>CREATIVE TECHNOLOGY</span> course <br>at <span>Media Design Practices, </span><span>ArtCenter College of Design,</span> fall 2020.</p>
+
+<!-- todo: make week parts navigatable, or foldable and expandable by clicking   -->
     <div class="wrapper">
 
+<!-- week 3 -->
       <div class="weeks">
-        <h1>WEEK 1</h1>
+        <h1>WEEK 3</h1>
 
         <div class="parts">
-          <p>3 less common creative technology tools:</p>
-          <p><a href="https://vcvrack.com/">vcv rack</a></p>
-          <p><a href="https://autodeskresearch.com/projects/dreamcatcher">dreamcatcher</a></p>
-          <p><a href="https://www.tinkamo.com/">tinkamo</a></p>
+          <h3>mini-project: a generative zine </h3>
+          <iframe src="https://drive.google.com/file/d/1Oh6DixXFzJZNIaWDSNZbehH5MRWeWj7s/preview" width="640" height="430"></iframe>
+          <h4>short description: </h4>
+          <p>A web generative zine that tells you interesting facts, on demand!</p>
+          <p><a href="https://shiny-niu-wu.github.io/mini-zine/">zine webpage<br>(to be fixed: the web version is currently not working)</a></p>
+          <p><a href="https://github.com/Shiny-Niu-Wu/mini-zine">you can look at the code here on github</a></p>
+          <h4>original idea and brief concept</h4>
+          <p>I always find that zines is a very powerful tool to convey an idea/knowledge efficiently and effectively in a rather short span of time and small layout. Originally, I wanted to create GEN-Zine, a web zine that holds generative trivia content and is specifically for the Gen Z population for daily consume (I know, such a smart name). In short, the zine should provide a trivia knowledge a day, with summarized descrition and key images gathered from the Internet. I also think that both zine and trivia are a media fit for Gen Z who would appreciate interesting stuff but have a relatively short attention span.<br>Given the one-week execution time, my main goal was to get the geneative function working, and then start from what I see and feel then.</p>
+          <h4>rough process and challenges throughout</h4>
+          <p>I started out with drawing a diagram (see week2) with more critical thinking and concept building. But it is always helpful to clearify the compoents of a project with a limited work time. Our instructors Ben and Max reminded us the importance to scale things down, but I sort of learn this as I go through the process.</p>
+          <p>The rough functional steps are 1) topic randomization, 2) data collection, 3) layout alignments, and 4) daily automation.</p>
+          <p>I followed the steps in this order in that each of them is required of its previous step. I first got the website's basic structure up, and then spent a fair amount of time looking for the right api. This is the biggest challenge. For sure I would not be so lucky to find a single api that does it all. I came to the conclusion that it was hard for myself and the Internet to summarize the definition of Gen Z, what their interests are. Moreover, even after collecting some key questions revolving around Gen Z, the Internet could go in all directions, which makes it hard to produce an accurate summarize (both text and image) that I'd like to put in the zine. Finally, I had to make the sacrifice of the Gen Z topic to focus on the goal of making the functionality work. I settled on a trivia database api for providing the interesting texts, and Google Custom Search Json api for the matching images. The Google api provided a search bar which I would need to then extract its search results. Below is the search result of "coke," with attributes setting to get image only and first result only.</p>
+          <iframe src="https://drive.google.com/file/d/1NjOiPWUhEiKQqgJoiO230SIU39FfmiOj/preview" width="640" height="480"></iframe>
+          <p>I wanted the generated trivia question to automatically be the search term of the Google api, and get result for every refresh of page or a click on "gimme more" button. In the scope of time, I only managed to extract the image from a preset search, and has not worked out making the question the default search. This is the reason of what I said previously about setting the search into one image result only. But at least, I was able to manipulate the generated trivia data and insert them onto the 8-page zine layout evenly. I also managed to split a base64 image into even parts and insert them onto the pages. The concept of this visual layout is that trivia questions are just like putting pieces of wonder together into an interesting unexpected, hence splitting the question sentence onto those pages, and have the final answer reveal fully on the last page. Users can then download the zine to local by clicking the button "download zine."</p>
+          <p>There are many parts that still have more work to be done and needed to be solved. Ideally, each time generating a new question, the content of the zine pages should be updated as well. The texts are currently working on the canvas, but not the image because of some difficulties working with the Google api. I kind of like the layout for now, actually. For further development, besides fixing the api workarounds, I am also thinking about adding other ways of interaction by taking the experience out from a screen to the physical world.</p>
+          <p>It is always learning through making. I had some time reviewing some javascript techniques and learning new ones including Jquery usage and some css tricks.</p>
+          <h4>tools and methods</h4>
+          <p>Language: HTML, CSS, javascript, Jquery.<br>Apis: <a href="https://opentdb.com/">Trivia api</a>, <a href="https://developers.google.com/custom-search/v1/overview">Google CSE epi</a>.<br></p>
+          <h4>screen record of project</h4>
+          <iframe src="https://drive.google.com/file/d/1Frw85ZAymWdK68ykJxJ5K91wJoYxjCE4/preview" width="718" height="414"></iframe>
         </div>
 
         <div class="parts">
-          <p>3 creative projects of inspirations:</p>
-          <p><a href="https://www.dailytouslesjours.com/en/work/air">Amateur Intelligence Radio (AIR): A radio show hosted by a building</a></p>
-          <p><a href="https://ip-poetry.findelmundo.com.ar/index.html">the ip poetry project</a></p>
-          <p><a href="https://www.storynest.com/pix/_4proj/ds_bloodlines/p0.php?lang=en">bloodlines</a></p>
-        </div>
-
-        <div class="parts">
-          <p>response to <a href="http://opendesignnow.org/index.html%3Fp=434.html">CRITICAL MAKING</a></p>
+          <p>response to <a href="http://blogs.ischool.berkeley.edu/ict4se/files/2010/09/Prototypes_prototype.pdf">What do Prototypes Prototype?</a></p>
           <div>
-            <p class="quotes">“Rather than just bemoaning the restrictions placed on users by institutionalized technological systems, engaged makers have the increasing ability and opportunity to constitute and construct alternatives.”</p>
-            <p class="thoughts">One has to engage in order to be engaged. Here I am referring to which I believe is a core spirit of social practice/socially engaged art. Like critical making, to engage “viewers” and make them into “participants,” is to transfer the ownership of the work, to extend both the conceptual and physical processes of the work, and to reevaluate the values of work (in this case, being put in the museum/getting design awards is not the final and the most honorable ending). And to turn “participants” into “makers,” is to execute what the article suggests as “material interventions,” where each intervention could provide a different setting and therefore a different version of a project; projects become reusable components of thinking and building, a kit for unlimited critical making.</p>
+            <p class="quotes">“It is common practice to build prototypes in order to represent different states of an evolving design, and to explore options. However, since interactive systems are complex, it may be difficult or impossible to create prototypes of a whole design in the formative stages of a project.” (1)</p>
+            <p class="thoughts">Prototyping in my mind is very much a critical making (what we read about last week on thinking+making) journey. When building something, everything before that was just a big chunk of “process,” but this thought of mine in the past certainly changed after I was introduced to ways of prototyping for interactive media art projects during my undergraduate studies (and definitely would be inspired more here at MDP). Prototyping is not just some kind of a test of a final product, but a cycle of reiterations that never lies a single straight line ahead; a system of roads that are diverted and joint, looped in cycles, and full of unexpected pathways. In fact, I can say from my experiences that prototypes can often lead a project to very different routes from what one expected to be a final.<br>In terms of building interactive systems, this writing reminds me of the very importance to make prototype(s) as stops in the process. It is helpful to stop and think about, if we are too indulged in the making process that we may have not given enough space and time for our critical thinking; or, are we thinking too much until the very last minute that whatever brilliant idea stuck in our heads does not get the chance to be realized?<br>To “stop” is actually to go!"</p>
           </div>
           <div>
-            <p class="quotes">“The ultimate goal of critical making experiences is not the evocative or pedagogical object intended to be experienced by others, but rather the creation of novel understandings by the makers themselves...The ‘objects’ of critical making are intended to be shared making experiences, curated through both material and textual instructions.”</p>
-            <p class="thoughts">The challenging part of creating something to be outputted to the society is not the process of itself, nor is it the process of outputting. It is the part where the receiver receives that creates the most unexpected and sometimes problematic results/reactions. Artworks, products, or something else, how things are taken and used do not always align with the intended purposes and actual functions of how they should be. Applying this thought onto the quote, we want objects to have both shared experiences and the ability to share experiences. To achieve that, critical makers will have to first convince themselves of their criticality even before engaging with others, otherwise as Marshall McLuhan ironically stated: “You must talk to the media, not to the programmer. To talk to the programmer is like complaining to a hot dog vendor at a ballpark about how badly your favorite team is playing.” That’s how “material and textual instructions” could be prepared enough to then evolve into something that has the capacity to be shared.</p>
+            <p class="quotes">“This kind of portrayal of onscreen interface elements as rough and hand-drawn was used in order to focus design discussion on the overall features of a design rather than on specific details of look and feel or implementation (Wong, 1992). Ironically, while the design team understood the meaning of the hand-drawn graphics, other members of the organization became enamored with the sketchy style to the extent that they considered using it in the final artifact...This example shows how the effectiveness of some kinds of prototypes may be limited to a specific kind of audience.” (7)</p>
+            <p class="thoughts">I think this again brings up my previous point of prototypes being not a messy, untraceable point of process to a final product, but a specific stage of effort going forward with critical making. The quote confirms that we should be aware that we are not prototyping merely for the end-vision, but more importantly, for the people along. This also helps us sort out the really important points to hit in creating prototypes before spending too much time only to be ineffective in collecting feedback. A thing about interactive projects is that to people who have a more limited knowledge of complex technology, it is often all the same, between 60% effort and 80% progress. This is dangerous in both directions of doing too much and doing too little, and could get us trapped in the mindset of prototyping for end-product even more, ending up with results “neither good enough nor bad enough to avoid misunderstandings” (11). In the modern world of visual-driven perception, it is important to look beyond that visual layer and provide the ‘right’ information to the user-testers. And it is in this notion where the prototype model really matters.</p>
           </div>
           <div>
-            <p class="quotes">“the ‘push-back’ of the physical electronics – the resistance of reality to our attempts to contain it – is therefore more present...engender a more invested and involved participant”</p>
-            <p class="thoughts">As a creative technologist with the background of interactive media art, I resonate with this sentence as it has always been a crucial concern regarding how deep the audience engages with my work. Adding a physical element to a work may add the incentive for a first interaction between the audience and the work, which could be a key to inspire them to then critically think about it afterwards. Besides the stimulation and fortified impression of having a multi-sensory experience, still, we need to jump from just the oohs and aahs of the magic of new technologies, or at least use it as a base, to then introduce to the general people, including ourselves, the possibility of critical making. The article brought together the often separated social aspect and technical aspect of critiquing the world, and asked us, with the two combined, to become more “invested and involved” as we all could be critical makers.</p>
+            <p class="quotes">“since the prototype was to be shown to a broad audience, an integrated style of prototype was chosen, both to communicate the implementation point and to verify that the piles representation was practically feasible.” (13)</p>
+            <p class="thoughts">From the many example prototypes shown in the writing, it is clear that different audiences have different expectations. Having a broad audience in this case is indeed chaotic, with the feeling of a need to produce a high quality and fidelity product at once to satisfy all. A large leap like that would once again trap us into prototyping for the sole purpose of a final delivery. Even for the finest thing, I do not think there is such a final version of that existing, because all things are prototypes with the hold of aroused questions that push itself and the designer(s) forward to the next ‘prototype.’ More so, following what the writing states: “Sometimes very simple representations make highly effective prototypes” (15), I do not think that integration with intersections of concepts and functions necessarily means more complexity—it means a field of broader purposes (at specific stages). It is the designers’ job to design an efficient, effective, and impactful experience, as “[p]rototypes themselves do not necessarily communicate their purpose” (15). I thank the writing for pointing this crucial perspective to me.</p>
           </div>
         </div>
 
       </div>
 
+<!-- week 2 -->
       <div class="weeks">
         <h1>WEEK 2</h1>
 
@@ -75,6 +89,42 @@
           <div>
             <p class="quotes">“It thus becomes an assertion of individual defiance of social norms. The byproduct of such exploration is pragmatic knowledge, the disruption of standard patterns of thought, and also dealienation – you see what’s behind the interfaces that surround us, coming closer to the reality of our social world.”</p>
             <p class="thoughts">I think this brings to the discussion of the complicated definition of being prosocial or antisocial. Hacking as suggested by the article is about breaking standards to open accesses and therefore opportunities, which in traditional sense is considered anti-social for not following the preset norms. But when hacking is associated with the digital platform that is already open (still exclusive for those who do not have access to the internet and a device), it almost feels rational and unattackable to have things on the platform to be consistent in open access. Otherwise you should not host it on the free platform but another platform that aligns your values on the hackable and shareable open source. And because hacking could be for others and for more opportunities for the general public, it becomes prosocial. It is not essentially about a hacker’s personal leanings of whichever side, but more so about his/her/their standing point of view—the spirit of the ‘way of being.'</p>
+          </div>
+        </div>
+
+      </div>
+
+<!-- week 1 -->
+      <div class="weeks">
+        <h1>WEEK 1</h1>
+
+        <div class="parts">
+          <p>3 less common creative technology tools:</p>
+          <p><a href="https://vcvrack.com/">vcv rack</a></p>
+          <p><a href="https://autodeskresearch.com/projects/dreamcatcher">dreamcatcher</a></p>
+          <p><a href="https://www.tinkamo.com/">tinkamo</a></p>
+        </div>
+
+        <div class="parts">
+          <p>3 creative projects of inspirations:</p>
+          <p><a href="https://www.dailytouslesjours.com/en/work/air">Amateur Intelligence Radio (AIR): A radio show hosted by a building</a></p>
+          <p><a href="https://ip-poetry.findelmundo.com.ar/index.html">the ip poetry project</a></p>
+          <p><a href="https://www.storynest.com/pix/_4proj/ds_bloodlines/p0.php?lang=en">bloodlines</a></p>
+        </div>
+
+        <div class="parts">
+          <p>response to <a href="http://opendesignnow.org/index.html%3Fp=434.html">CRITICAL MAKING</a></p>
+          <div>
+            <p class="quotes">“Rather than just bemoaning the restrictions placed on users by institutionalized technological systems, engaged makers have the increasing ability and opportunity to constitute and construct alternatives.”</p>
+            <p class="thoughts">One has to engage in order to be engaged. Here I am referring to which I believe is a core spirit of social practice/socially engaged art. Like critical making, to engage “viewers” and make them into “participants,” is to transfer the ownership of the work, to extend both the conceptual and physical processes of the work, and to reevaluate the values of work (in this case, being put in the museum/getting design awards is not the final and the most honorable ending). And to turn “participants” into “makers,” is to execute what the article suggests as “material interventions,” where each intervention could provide a different setting and therefore a different version of a project; projects become reusable components of thinking and building, a kit for unlimited critical making.</p>
+          </div>
+          <div>
+            <p class="quotes">“The ultimate goal of critical making experiences is not the evocative or pedagogical object intended to be experienced by others, but rather the creation of novel understandings by the makers themselves...The ‘objects’ of critical making are intended to be shared making experiences, curated through both material and textual instructions.”</p>
+            <p class="thoughts">The challenging part of creating something to be outputted to the society is not the process of itself, nor is it the process of outputting. It is the part where the receiver receives that creates the most unexpected and sometimes problematic results/reactions. Artworks, products, or something else, how things are taken and used do not always align with the intended purposes and actual functions of how they should be. Applying this thought onto the quote, we want objects to have both shared experiences and the ability to share experiences. To achieve that, critical makers will have to first convince themselves of their criticality even before engaging with others, otherwise as Marshall McLuhan ironically stated: “You must talk to the media, not to the programmer. To talk to the programmer is like complaining to a hot dog vendor at a ballpark about how badly your favorite team is playing.” That’s how “material and textual instructions” could be prepared enough to then evolve into something that has the capacity to be shared.</p>
+          </div>
+          <div>
+            <p class="quotes">“the ‘push-back’ of the physical electronics – the resistance of reality to our attempts to contain it – is therefore more present...engender a more invested and involved participant”</p>
+            <p class="thoughts">As a creative technologist with the background of interactive media art, I resonate with this sentence as it has always been a crucial concern regarding how deep the audience engages with my work. Adding a physical element to a work may add the incentive for a first interaction between the audience and the work, which could be a key to inspire them to then critically think about it afterwards. Besides the stimulation and fortified impression of having a multi-sensory experience, still, we need to jump from just the oohs and aahs of the magic of new technologies, or at least use it as a base, to then introduce to the general people, including ourselves, the possibility of critical making. The article brought together the often separated social aspect and technical aspect of critiquing the world, and asked us, with the two combined, to become more “invested and involved” as we all could be critical makers.</p>
           </div>
         </div>
 
