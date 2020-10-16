@@ -5,8 +5,8 @@ body{
 #myName{
   transform: rotate(90deg);
   position: fixed;
-  top: 200px;
-  right: -297px;
+  top: 230px;
+  right: -310px;
   font-size: 4.3em;
   font-weight: 900;
 }
