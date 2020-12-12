@@ -2,6 +2,11 @@ body{
   font-family: Helvetica;
 }
 
+.center{
+  width: 100%;
+  text-align: center;
+}
+
 #myName{
   transform: rotate(90deg);
   position: fixed;
@@ -19,16 +24,8 @@ body{
   right: -150px;
 }
 
-span{
-  font-weight: bold;
-}
-
 .wrapper{
   padding: 3em;
-}
-
-a{
-
 }
 
 p::selection{
