@@ -63,6 +63,47 @@
           <p>The final presentation is shown at the very beginning.</p>
           <p>Here's how the visuals look with the code layered on top</p>
           <iframe src="https://drive.google.com/file/d/1nZgTUSMB4fxp6H2FCIIW92CpSynd3c7y/preview" width="640" height="480"></iframe>
+          <pre class="line-numbers">
+            <code class="language-java">
+float getBPMVis(float bpm){
+
+        // this function can be found graphed out here :https://www.desmos.com/calculator/rx86e6ymw7
+	float bps = 120./bpm; // beats per second
+	float bpmVis = tan((time*PI)/bps);
+	// multiply it by PI so that tan has a regular spike every 1 instead of PI
+	// divide by the beat per second so there are that many spikes per second
+	bpmVis = clamp(bpmVis,0.,10.);
+	// tan goes to infinity so lets clamp it at 10
+	bpmVis =  abs(bpmVis)/20.;
+	// tan goes up and down but we only want it to go up
+	// (so it looks like a spike) so we take the absolute value
+	// dividing by 20 makes the tan function more spiking than smoothly going
+	// up and down, check out the desmos link to see what i mean
+	bpmVis =  1.+(bpmVis*0.05);
+	// we want to multiply by this number, but its too big
+	// by itself (it would be too stroby) so we want the number to multiply
+	// by to be between 1.0 and 1.05 so its a subtle effect
+	return bpmVis;
+}
+
+void main() {
+
+    vec2 pos = uv(); // origin is in center
+
+    float angle = fract(pos.x/abs(pos.y*.1));
+
+    float r = fract(angle + time);
+
+    float bpmVis = getBPMVis(43.);
+
+	float b = tan(tan(length(pos*10.)) * bands.y * 5.);
+
+    vec4 color = vec4(bpmVis,r,b,1.);
+
+    gl_FragColor = color;
+}
+            </code>
+          </pre>
           <p>audio source: <a href="https://youtu.be/1SXn17vTba0">youtube</a></p>
         </div>
 
