@@ -5,6 +5,7 @@ body{
 .center{
   width: 100%;
   text-align: center;
+  padding: 1em;
 }
 
 #myName{
@@ -14,6 +15,15 @@ body{
   right: -310px;
   font-size: 4.3em;
   font-weight: 900;
+}
+
+#myName a{
+  text-decoration: none;
+  color: black;
+}
+
+#myName a:hover{
+  color: purple;
 }
 
 #pageDescription{
