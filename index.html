@@ -9,15 +9,46 @@
     <p id="myName"><a href="https://shinyshuanyi.cargo.site/">WU, Shiny Shuan-Yi</a></p>
     <p id="pageDescription">a documentation site for <b>CREATIVE TECHNOLOGY</b> course <br>at <b>Media Design Practices, ArtCenter College of Design.</b></p>
 
-<!-- todo: make week parts navigatable, or foldable and expandable by clicking   -->
     <div class="wrapper">
+
+<!-- week 2 -->
+      <div class="weeks">
+        <h1>WEEK 2</h1>
+
+        <div class="parts">
+          <h3>project: a system of chain of events</h3>
+          <p>Following in-class critique, our group has come together to revise the diagram:</p>
+          <iframe src="https://drive.google.com/file/d/1xpRCTuoPfj7ybjFL1_qlJg0YYEqloJ0I/preview" width="820" height="380"></iframe>
+          <h3>a wonderful workday</h3>
+          <p>scenario: Another day of work-from-home has started, but everyone could instantly feel connected with the chains between different message platform. Never miss a meeting! The work messages of the day would be transformed into beautiful web paintings for the work team as a daily ritual, and an incentive to work hard and happy everyday.</p>
+          <p>(possibly) using: ifttt, Discord.js</p>
+          <br>
+          <p>[to be continued......]</p>
+        </div>
+
+      </div>
 
 <!-- week 1 -->
       <div class="weeks">
         <h1>WEEK 1</h1>
 
         <div class="parts">
-
+          <h3>project: a system diagram proposal of chain of events</h3>
+          <iframe src="https://drive.google.com/file/d/1v5mLcue7UGXDV6gC3aUUlZBd06WsFmwG/preview" width="640" height="385"></iframe>
+          <p>proposed title: Keypaint</p>
+          <p>description: Wake up everyday to Keypaint, your morning routine of making beautiful web paintings by a random smash of computer keys, accompanied with a generated melody.</p>
+          <p>collaborators: Iris Yuanyuan Gong, Jensen Gu</p>
+          <br>
+          <p>It started with this picture in my head of a cocktail piano...</p>
+          <img src="https://media-cdn.tripadvisor.com/media/photo-s/0c/8c/a4/39/cocktail-piano-in-reception.jpg" alt="cocktail_piano">
+          <p>All three of us like the idea of combining different senses in the production of art.</p>
+          <p>In order to trigger a chain of events that connect different platforms for users, during the brainstorming process we decided to turn to the direction of a virtual piano. There are a lot of applications that have the function of turning computer keypressing to the playing of melodic tunes. What we would like to do is to do something more than just playing music.</p>
+          <p>Iris had a very beautiful imagination of drawing paintings instead of making cocktails. In search of usable apis she found the <a href="https://developers.google.com/web/updates/2018/01/paintapi">CSS paint api</a> by Google.</p>
+          <p>I made the structure of the system diagram for all of us to revise. In making the chains of events, I also found the <a href="https://www.npmjs.com/package/audiokeys">AudioKeys api</a> for mapping qwerty keys to computer keys, and the <a href="https://github.com/rakannimer/midi-to-json-api">midi to json api</a> for turning the file of played keys into parsable json format, which should then be fetched to use with the CSS paint api, transforming data to beautiful paints on the web.</p>
+          <p>We decided to leave the creative decision of the use of generated web paintings to users, instead of my original idea of directly making the outcome the computer's wallpaper.</p>
+          <br>
+          <p>feedback/critique: We were asked to focus more on the chain of events on the user's end. At this point it looks like most of the work could be done once without user changing platforms. The piano keyboard+sound generating+drawing could possibly be done in p5.js all at once. We should shift the focus to what a user would like to do with the outcome and start from there.</p>
+          <p>The next step is to revise our diagram, and then prototype the workarounds in testing the flow.</p>
         </div>
 
       </div>

@@ -56,7 +56,9 @@ body{
 }
 
 .semester_wrapper{
+  /* this line would make sure styles are displayed like they should by detecting the auto of browser */
   appearance: auto;
+
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -86,7 +88,7 @@ p::selection{
 }
 
 .parts{
-  width: 70%;
+  width: 75%;
   padding: 3em;
   margin-bottom: 1em;
   border: solid #eeeeee 3px;
