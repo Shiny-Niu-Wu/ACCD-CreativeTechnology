@@ -30,12 +30,53 @@ body{
   transform: rotate(90deg);
   font-weight: lighter;
   position: fixed;
-  top: 250px;
-  right: -150px;
+  top: 350px;
+  right: -130px;
 }
 
 .wrapper{
   padding: 3em;
+  width: 85%;
+}
+
+.projects{
+  position: relative;
+  left: 50%;
+  top: 105px;
+}
+
+.project_link_group{
+  display: flex;
+  flex-direction: column;
+}
+
+.project_link{
+  margin-bottom: 2.5px;
+  margin-top: 2.5px;
+}
+
+.semester_wrapper{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: left;
+  margin-bottom: 3em;
+}
+
+.semester_wrapper:hover{
+  color: purple;
+}
+
+.content{
+  display: none;
+}
+
+.semester{
+  font-size: 100px;
+  font-weight: bold;
 }
 
 p::selection{
@@ -44,7 +85,7 @@ p::selection{
 }
 
 .parts{
-  width: 60%;
+  width: 70%;
   padding: 3em;
   margin-bottom: 1em;
   border: solid #eeeeee 3px;

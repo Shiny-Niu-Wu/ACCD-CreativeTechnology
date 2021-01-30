@@ -7,442 +7,476 @@
   </head>
   <body>
     <p id="myName"><a href="https://shinyshuanyi.cargo.site/">WU, Shiny Shuan-Yi</a></p>
-    <p id="pageDescription">a documentation site for <b>CREATIVE TECHNOLOGY</b> course <br>at <b>Media Design Practices, ArtCenter College of Design,</b> fall 2020.</p>
+    <p id="pageDescription">a documentation site for <b>CREATIVE TECHNOLOGY</b> course <br>at <b>Media Design Practices, ArtCenter College of Design.</b></p>
 
 <!-- todo: make week parts navigatable, or foldable and expandable by clicking   -->
     <div class="wrapper">
-
-<!-- week 14 -->
-      <div class="weeks">
-        <h1>WEEK 14</h1>
-
-        <div class="parts">
-          <h2>Crit Week</h2>
-        </div>
-
-      </div>
-
-<!-- week 13 -->
-      <div class="weeks">
-        <h1>WEEK 13</h1>
-
-        <div class="parts">
-          <h3>GLSL Shaders, workshop with Char Stiles (2/2)</h3>
-          <p>Learning raymarching!</p>
-          <p>I forgot to record the checkpoints, but shaders are fun!</p>
-          <p>Some time left we learned about webcam image controlling, and I quite like how Char described how it works that's similar to the concept of Plato's Eye Feelers — emitting from our eyes, hit stuff and go back into the eyes. That's how we see.</p>
-          <p>Anyway, here's a play with a festive scene.</p>
-          <iframe src="https://drive.google.com/file/d/17Gn9tss2XR7IiVf5K82CA-jcFznDsodv/preview" width="340" height="360"></iframe>
-        </div>
-      </div>
-
-<!-- week 12 -->
-      <div class="weeks">
-        <h1>WEEK 12</h1>
-
-        <div class="parts">
-          <h3>GLSL Shaders, workshop with Char Stiles (1/2)</h3>
-          <p>Learning what GLSL shaders are and how they work<br>including basic uv(), vector compositing, and sound responding</p>
-          <p>I was able to follow along the in-class tutorial, see the below checkpoint</p>
-          <iframe src="https://drive.google.com/file/d/1TvIJ7-tDPjd9LYbrF-s-FNVg2B80rZ5l/preview" width="380" height="360"></iframe>
-        </div>
-
-        <div class="parts">
-          <h2>GLSL mini project: <a href="https://shinyshuanyi.cargo.site/The-Garbage-Truck">The Garbage Truck</a></h2>
-          <p>prompt: make shader visuals that respond to a sound</p>
-          <iframe src="https://drive.google.com/file/d/1tusXSu9z02GzFLTzDsHm6Qpn6D_VzcVd/preview" width="800" height="450"></iframe>
-          <p>The background melody comes from a famous music piece — Maiden's Prayer. But as a Taiwanese, we are most familiar with its ubiquitous existence as the broadcasting music of a garbage truck. In Taiwan, whenever this melody is played loudly and on loop in the streets, people know that garbage trucks have arrived.</p>
-          <iframe src="https://drive.google.com/file/d/16-J3Cd7C6w-16dxFZZvgcQCkYhzTf6Fd/preview" width="640" height="340"></iframe>
-          <iframe src="https://drive.google.com/file/d/1kdYnudVUN9jfccb3OSRVsARYB_stQdO_/preview" width="640" height="340"></iframe>
-          <p>design choices: truck is yellow, people gather around the road, lots of red lights in traffic, all over the city, loud annoucement to everyone<br>looks like this</p>
-          <iframe src="https://drive.google.com/file/d/1SGpdn2zp70LlbyZlkxBX12kYIai_Zuwh/preview" width="800" height="450"></iframe>
-          <p>To create a more iconic scene......</p>
-          <p>collage with images, including the iconic Taiwanese blue-and-white slippers</p>
-          <iframe src="https://drive.google.com/file/d/13hW21OWJnHxapddKTr0p-Me__Zo8Pu28/preview" width="320" height="240"></iframe>
-          <iframe src="https://drive.google.com/file/d/1uS9Cqmip1U2i2AaNff-1fAl1ShpAV_YE/preview" width="320" height="240"></iframe>
-          <p>The final presentation is shown at the very beginning.</p>
-          <p>Here's how the visuals look with the code layered on top</p>
-          <iframe src="https://drive.google.com/file/d/1nZgTUSMB4fxp6H2FCIIW92CpSynd3c7y/preview" width="640" height="480"></iframe>
-          <pre class="line-numbers">
-            <code class="language-java">
-float getBPMVis(float bpm){
-
-        // this function can be found graphed out here :https://www.desmos.com/calculator/rx86e6ymw7
-	float bps = 120./bpm; // beats per second
-	float bpmVis = tan((time*PI)/bps);
-	// multiply it by PI so that tan has a regular spike every 1 instead of PI
-	// divide by the beat per second so there are that many spikes per second
-	bpmVis = clamp(bpmVis,0.,10.);
-	// tan goes to infinity so lets clamp it at 10
-	bpmVis =  abs(bpmVis)/20.;
-	// tan goes up and down but we only want it to go up
-	// (so it looks like a spike) so we take the absolute value
-	// dividing by 20 makes the tan function more spiking than smoothly going
-	// up and down, check out the desmos link to see what i mean
-	bpmVis =  1.+(bpmVis*0.05);
-	// we want to multiply by this number, but its too big
-	// by itself (it would be too stroby) so we want the number to multiply
-	// by to be between 1.0 and 1.05 so its a subtle effect
-	return bpmVis;
-}
-
-void main() {
-
-    vec2 pos = uv(); // origin is in center
-
-    float angle = fract(pos.x/abs(pos.y*.1));
-
-    float r = fract(angle + time);
-
-    float bpmVis = getBPMVis(43.);
-
-	float b = tan(tan(length(pos*10.)) * bands.y * 5.);
-
-    vec4 color = vec4(bpmVis,r,b,1.);
-
-    gl_FragColor = color;
-}
-            </code>
-          </pre>
-          <p>audio source: <a href="https://youtu.be/1SXn17vTba0">youtube</a></p>
-        </div>
-
-        <div class="parts">
-          <p>response to <a href="https://www.globalspec.com/reference/64675/203279/chapter-1-the-electronic-as-post-optimal-object"><i>The Electronic as Post-optimal Object</i></a> by Anthony Dunne and<br>
-            <a href="https://www.versobooks.com/books/2742-radical-technologies">Chapter 2 Internet of Things, <i>Radical Technologies</i></a> by Adam Greenfield
-          </p>
-          <div>
-            <p class="quotes">“a not-insignificant percentage of the population has so decisively internalized the values of the market for their labor that the act of resculpting themselves to better meet its needs feels like authentic self-expression” (Greenfield 36).</p>
-            <p class="thoughts">Even if we have our own standards looking at things, those criteria would be based on the existing system and mechanism, and our imagination of how things work within it. There are already a set of standards that come along with the products, and so our goals are mostly to see if our standards meet with the set standards. This also includes the decisions we make on and for ourselves in how we should react to things. The word “resculpting” in the quote then becomes interesting and ambiguous in thinking if we could really escape from the system and really decide for ourselves, if we’re only canceling Amazon order (38) for making while a correct order or another order on another platform, and if we’re choosing uber owing to it being the most instant resource when we defaultly search on Google Maps for directions. We have freedom with limitations, but we cannot easily imagine freedom outside of the limited boundaries. I believe that the real creativity lies outside of those boundaries, and maybe not even far, but just right next to the built walls of the authentic normal, the accurate, one and only truth of the Internet of Things. If the Self is not considered one of the “things,” then perhaps where we should be heading is the Internet of Self.</p>
-          </div>
-          <div>
-            <p class="quotes">“once these prototype elements have been subjected to the extreme rationalization required by mass production, they become reduced to abstract ultraminiaturized electronic components. Their modernist poetry, based on truth to materials, is lost” (Dunne 7).</p>
-            <p class="thoughts">This reminds me of a TV drama scene about a very junior intern at a finance firm. Every intern at this firm has to speak about their unique value to the company during a performance evaluation, and while other more competent interns respond in confidence each of their own strength, this junior intern says something that shockingly meets the supervisor’s expectations—it is wrong for one to talk about one’s value, for that one’s value is defined by the customers’ needs. I find this scene related to the topic here. It seems that values are defined by functionalities, and functionalities are defined by purposes. Functionalities and poetry seem to be on the two sides of a spectrum. Can we really blame people for not appreciating the “true values” of electronics (same for all other products) if being “poetic” has never been the purpose of its making when designed? Sure, as designers, we look at things differently, maybe not essentially deeper or wider, but perhaps from the other side or alternative angles. If no one does, we are the ones that question the distance between the two poles of the spectrum. Plus, poetry could always be “added” to a product after it is made with only functionality. Much like many art pieces out there. Oops. Just some thoughts.</p>
-          </div>
-          <div>
-            <p class="quotes">“Robert Rauschenberg’s Oracle...has had its technology updated three times over thirty years, but its materiality and cultural meaning remain unchanged. Cultural obsolescence need not occur at the same rate as technological obsolescence” (Dunne 19).</p>
-            <p class="thoughts">This is an example straight to the point of this chapter of the book. To update the technology while retaining the materiality, is to dematerialize technology of purpose, form, function, and our interactive experience with it. As for its cultural meaning, I assume that it means that it is in contrast not changed by force or purpose, but is shifted forward to keep up with the times. It is impossible for the cultural meaning to remain unchanged 100%, for we cannot deliberately make up a cultural meaning. But we can invent technology. Materiality is something that holds our conventional perception of technology, from which the author asks us to step away to better observe the true “rate” of natural forms and happenings (of technology and ourselves). Laws need to be updated and modified in order to keep up with the culture. But like the example in this quote, interesting things happen in between the lags. If technology is not defined by materiality, nor is it defined by cultural meaning, I suppose that it is defined by the ways and processes of human interaction.</p>
-          </div>
-        </div>
-
-      </div>
-
-<!-- week 11 -->
-      <div class="weeks">
-        <h1>WEEK 11</h1>
-
-        <div class="parts">
-          <h2>Thanksgiving: no class</h2>
-        </div>
-
-        <div class="parts">
-          <h2><a href="https://shinyshuanyi.cargo.site/Parasite">Parasite</a></h2>
-          <h3>Digital Ecologies Project, collaboration with Nayoung Kwon</h3>
-          <p>physical computing and web programming<br>technology: photon, piezo element, pulse sensor, LED, wires<br>coded with C++ in particle.ai</p>
-          <iframe src="https://drive.google.com/file/d/1ViLYuS8RPLF5FZvH5lfFFh1Pnc7Zvuhg/preview" width="600" height="320"></iframe>
-          <div class="center"><a href="https://shiny-niu-wu.github.io/parasite/">becoming a virtual parasite...</a></div>
-          <iframe src="https://drive.google.com/file/d/1MUCdu6a3pf4xy09vyf-OW45gi9PPoOKi/preview" width="270" height="360"></iframe>
-          <p>a parasite...</p>
-          <iframe src="https://drive.google.com/file/d/1a2X3WRc7R_yJQYbdSFvbA8Wd-UphjwgW/preview" width="480" height="400"></iframe>
-          <p>will only exist...</p>
-          <iframe src="https://drive.google.com/file/d/1MKqV7nFWUmEwOPUetH1RtBjYYVB18Ote/preview" width="340" height="460"></iframe>
-          <p>when its host exists.</p>
-          <iframe src="https://drive.google.com/file/d/1LLXj1Zmk6BV0nJ3Kjm-FP5_H3b7i2lXA/preview" width="640" height="480"></iframe>
-          <p>the frequency of existing...</p>
-          <iframe src="https://drive.google.com/file/d/1iELVMaH2Vjx8R_awVMfYsGa005NCAgdq/preview" width="360" height="480"></iframe>
-          <p>from the working table, from a pulse, from everyday life</p>
-          <iframe src="https://drive.google.com/file/d/1W5pgSvKjnlF0BnWf-qGJglJaiIt2kR5c/preview" width="640" height="300"></iframe>
-          <p>between things that are controlled and uncontrolled</p>
-          <div class="center"><p>(meant to be)</p></div>
-          <p>but perhaps the host would only recognize its existence</p>
-          <iframe src="https://drive.google.com/file/d/1lssjFkdCubZexlxjdi3iZQF0ZuomOjSg/preview" width="300" height="320"></iframe>
-          <p>with the attachment from a virtual parasite</p>
-          <iframe src="https://drive.google.com/file/d/1KaZoZHR-aXUtnkjUn3aRybrn_7x3K9rn/preview" width="300" height="320"></iframe>
-          <p>some taps of frequency</p>
-          <iframe src="https://drive.google.com/file/d/1V5kALWjhtQMlnOYLoABdDrrXQRJSBtHy/preview" width="640" height="460"></iframe>
-          <p>taps in our digital life</p>
-          <iframe src="https://drive.google.com/file/d/1iaG-n4kkxEGw60EIA4zPZ3MuTiBFqSyw/preview" width="300" height="320"></iframe>
-          <p>and will only exist there</p>
-          <div class="center"><p>(some time in the future)</p></div>
-          <hr>
-          <p>Contribution:
-            <br>Title: Nayoung
-            <br>Concept: Shiny
-            <br>Web and photon code: Shiny
-            <br>Web Illustration: Nayoung
-            <br>XD illustration: Shiny
-            <br>Physical circuits and prototyping: Nayoung (pulse sensor, wearable wristband) & Shiny (piezo element)
-          </p>
-        </div>
-
-      </div>
-
-<!-- week 9-10 -->
-      <div class="weeks">
-        <h1>WEEK 9-10</h1>
-
-        <div class="parts">
-          <h3>Digital Ecologies</h3>
-          <p>In class: Learning how to define data events to publish onto the web console, and subscribing to each other's events.</p>
-          <p>project brainstorming:
-            <br>Much opposite to how digital technologies bring humanity closer, I imgaine those "digital creatures" would only need themselves with a feedback loop of self-triggering events. I find two piezo elements in my basic sensor pack and start thinking about a looping scene — if there would be some kind of motor physically in between the two piezos, the motor would be triggered to spin for some degree by the sensed touches of the piezos, which then would hit the other piezo element with an attached object (to the motor), which would then spin again for touching a piezo, and have the attached object spin along to hit the piezo. And this would go on in repetition.
-            <br> I have always been largely inspired by the works of video art artist Nam June Paik, especially the <a href="https://publicdelivery.org/nam-june-paik-tv-buddha/">TV Buddha series</a> series. The piezo and motor interaction loop is almost like physicalizing and visuallizing the back and forth of the Buddha's stare in the air.
-          </p>
-        </div>
-
-      </div>
-
-<!-- week 8 -->
-      <div class="weeks">
-        <h1>WEEK 8</h1>
-
-        <div class="parts">
-          <h3>Digital Ecologies</h3>
-          <p>sending sensor data as variables to the browser</p>
-          <p>Connecting photon boards and sensors in South Korea and Taiwan, learning photon board and experimenting with potentiometer data collecting</p>
-          <p><a href="photon.html">Experiment page with Nayoung</a> The shapes on the page each responds to Nayoung's or Shiny's collected data from a potentiometer. When both photons are online, the page would display changing shapes based on the two potentiometers' inputs.</p>
-          <iframe src="https://drive.google.com/file/d/1mc9Ioeq1eMZwm0fcDf-gfFIu6Coq4jJr/preview" width="640" height="480"></iframe>
-        </div>
-
-        <div class="parts">
-          <p>response to <a href="https://www.amazon.com/Vehicles-Experiments-Psychology-Valentino-Braitenberg/dp/0262521121">VEHICLES-Experiments in Synthetic Psychology</a></p>
-          <div>
-            <p class="quotes">“In the long run it will be seen to move in a complicated trajectory, curving one way or the other without apparent good reason” (5).</p>
-            <p class="thoughts">It’s interesting to read that the designed movements, though self-automating, could lead to unplanned and even unexpected results. The fact that everything is a result of the sum of all forces on earth (5) speaks out loud this writing’s perspectives of being alive—to be responsive. Even though as a maker, one would mostly know the mechanics and theories of what one is building, the fun part is that besides this “self-driven” force that we designed, there are so many factors embedded in the preconditions or current environment that could affect the overall experience, making it more complicated than what we originally focused on to observe. It is impossible to test out an observation with only a single force, not until we try and try “escaping until it safely reaches places where the influence of the source is scarcely left” (9).</p>
-          </div>
-          <div>
-            <p class="quotes">“Their characters are quite opposite. Both dislike sources...Vehicle 2a is a COWARD, you would say...Vehicle 2b is AGGRESSIVE, obviously” (9).</p>
-            <p class="thoughts">Statements like these are made after observations of the vehicles’ movements, which, interestingly, we somehow already predicted. Observing the movements is just a process during the experiments to test out if our predictions would be true. But it reads here that only after we see the actions performed by those vehicles, we then believe the nature of these predicted “behaviors,” and that’s when we start to further interpret them. Being a COWARD or being AGGRESSIVE is something you would describe a person. So what does it mean when we apply these human descriptions to the vehicles as their unique characteristics? While it is easy to associate sensors and motors of a machine as sensors and effectors of a neural network inside a human body, what separates us humans from those machines is our ability to think and act independently. Those creatures’ “independent” behaviors are coded/designed behaviors, which make their instincts predictable patterns under the Nature that we ourselves create (17). As we predict the patterns of the designed behaviors, perhaps, the cowardness and aggressiveness lie in the smaller steps that build up the patterns where we allow the machines to be independent.</p>
-          </div>
-          <div>
-            <p class="quotes">“There is something very crude about a vehicle that can only be excited...and knows no soothing or relaxing stimuli” (10).</p>
-            <p class="thoughts">We build things for them to function. If we do not tell them to stop, what they do is to keep functioning, regardless of what their designed actions are. An actual-living creature that behaves similarly is a goldfish, which would not stop eating as long as food is presented, even if that means eating to death. From that, “we can easily see how much the-more-the-merrier behavior could lead to disaster” (15). Reading to this point, I found myself not really looking at the graphs of vehicles as vehicles, but actual living creatures, and perhaps, human beings. The scary thing is that I do not find it out of place when throwing the same questions or observations (like this quote) back at ourselves.</p>
-          </div>
-        </div>
-
-      </div>
-
-<!-- week 7 -->
-      <div class="weeks">
-        <h1>WEEK 7</h1>
-
-        <div class="parts">
-          <h2>Crit Week</h2>
-        </div>
-
-      </div>
-
-<!-- week 6 -->
-      <div class="weeks">
-        <h1>WEEK 6</h1>
-
-        <div class="parts">
-          <p>response to <a href="https://www.bloomberg.com/graphics/2015-paul-ford-what-is-code/">What is Code</a></p>
-          <div>
-            <p class="quotes">“Your competitor has an animated shopping cart that drives across the top of the screen at checkout. That cart remembers everything customers have ever purchased and generates invoices on demand. Your cart has no memory at all.”</p>
-            <p class="thoughts">Compete, compete, and compete. Just because your competitors have some cool features you do not have, you are going to incorporate them into your work, and think that this will make you cool, too? Well, you’re not wrong, not 100% though. But is the premise of success having the same memory even if we’re on a different platform? How can we code memory? Perhaps we can link this to the discussion of code effectiveness. Code effectiveness got two ways: the effectiveness of code in aesthetics, and the effectiveness of code in functionalities. In this quote I can see both. Is there another way of code effectiveness? That is not about functions and aesthetics, but maybe feelings? What kind of memory would that be composed of?</p>
-          </div>
-          <div>
-            <p class="quotes">“It’s miraculous that we have mobile phones, but it’s equally miraculous that we can charge them.”</p>
-            <p class="thoughts">Yes, indeed. Phones are taking over our lives, but while they are owning us, we are still their owners. The social feeds on the phones charge us, and we charge them in return, but just for us to be charged by them more later. Phones are hardwares, and our interactions with phones are softwares. What is considered the code here? I think humans are the running code here. Our (the code’s) existence enables the interactions (the softwares) to be performed on phones (the hardwares). Hence, the miraculous thing here is that it all goes back to philosophical and seem-to-be useless discussion of our existences. Those discussions become powerful as more and more things are self-defined. Phones holding those discussions become powerful, too.<br>“If coders don’t run the world, they run the things that run the world.”</p>
-          </div>
-          <div>
-            <p class="quotes">“An excellent language! But it doesn’t really let you organize things...we have this data structure for our customers (name, address, and so forth), and we have all these functions for manipulating that data (update_address, send_bill, delete_account), but the thing is, those functions aren’t related to the data except by the naming convention...So what if...we made a little box called Customer (call it a “class,” as in the taxonomical sense, like a Customer is a subclass of the species human, which is a subclass of mammal, etc.), and we put the data and methods relating to customers into that box.”</p>
-            <p class="thoughts">As a person who also codes (not sure if I am qualified as a “real programmer” like those in the East coast of USA stated by this article), I do not know where to start in responding to this large brick of quote. A lot of things are arbitrary in coding, and good programmers try to assign each to its unique name, those that resonate with its real-life representation (in this case, customers), or its functionalities (for example, to map();) while there are no real customers or maps in the text editor. The language of coding is poetic; the act of coding the language of coding is poetic. Yet interestingly, the poetic characteristics of coding is to make coding itself less arbitrary, which in other words, less poetic. The poetic aspect of coding also changes the power dynamics: who are we to assign a “class” to customers, and let them become data receptors to perform functions assigned? Are we and the customers more intimate or less intimate in this process?<br>I find this description very interesting: “Every time we have a new customer we make a new instance of our class. Code can be a black box, with tentacles and wires sticking out, and you don’t need to—don’t want to—look inside the box. You can just put a couple of boxes next to each other, touch their tentacles together, and watch their eldritch mating.”</p>
-          </div>
-        </div>
-
-      </div>
-
-<!-- week 5 -->
-      <div class="weeks">
-        <h1>WEEK 5</h1>
-
-        <div class="parts">
-          <p>3 art/design simulation project</p>
-          <p><a href="https://www.instagram.com/p/CGKmmu7lNN-/">quantum memories, by REFIK ANADOL in collaboration with Google</a></p>
-          <p><a href="http://iancheng.com/emissaries">emissaries (trilogy), by IAN CHENG</a></p>
-          <p><a href="https://madmuseum.org/exhibition/the-eyes-level">the eye's level, by ANNE LINDBERG</a></p>
-        </div>
-
-        <div class="parts">
-          <h3><a href="https://shinyshuanyi.cargo.site/Polar-Bear-Simulation">UNITY simulation vivarium project—floating</a></h3>
-          <iframe src="https://drive.google.com/file/d/1FnW-jy-RF2RHr5TvQBR-mD-0CZCPYGhg/preview" width="640" height="480"></iframe>
-          <p><i>Please watch with audio on.</i></p>
-          <p>process:
-            <br><br>Last week, there were a lot of mechanisms that I were not able to execute. And given the short duration of 1.5week, I was asked to think about the scale of this project, and really focus on the main action that I would like to show.
-            <br><br>Tweaking concept:
-            I imagine in a world that is constantly floading, humans are already well-prepared with changeable living structures. From more research I did on global sea level rising and various coping strategies, I have come to understand more about the effects of flooding, which has a lot to do with where the houses are and the geographical altitude of locations.
-            <br>In this rough experiment, I speculate that all hosues are mounted on a column base, which will detect the sea level and rise the houses to match with the height. In other words, the houses would never drown. But that means at the same time, sacrifice of land usage, and segragation of people in their own houses.
-            <br>But <b>no matter how much we prepared, we can never prepare for the unpredicted.</b> Here I brought in <b>polar bears as an ironic and worth pondering subject</b> that has to with the melting of ice————the shortening of ice and the rising of never-drowned houses. We could actually try to manage all the human activities that worsen the situation, but we could not manage if nature comes back to us. We could have never expected polar bears to destroy the columns, and the hosues fall down into the water.
-            <br><br>The first-ever polar bear in the scene would be controlled by the "player" with the four directions on keyboard. When the polar bear collides with a column, the column disappeared, and the houses come down. As the houses touch the bottom of the water, they transform into polar bears.
-          </p>
-          <iframe src="https://drive.google.com/file/d/1ckQdn1QsP6A4twzHBjwNeHf5-7QDUqRn/preview" width="640" height="480"></iframe>
-          <p>
-            This is a second prototype.
-            <br>I got rid of the water ring toss idea, as well as the particle system, as now the major force would be the polar bears. In this version of prototype, the particles are removed, and the instantiated object has become a polar bear. There are a lot of scripting, especially with the control of water rising and being able to adjust the columns' growth according to that.
-            <br>There is also the matter of lighting, texturing, etc., which I have learned a lot from doing this project. Some fun went to the setting up of cameras, one of those following the rising water level, one following the first-ever polar-bear, and then one observing the chaotic ground underwater. And last but not least, a questionable touch of adding audio "up, up, up" for the houses, and "down, down, down" for the polar bears whenever they collide with the columns.
-            <br><br>Here are some amazing screenshots from the process of making this project:
-          </p>
-          <iframe src="https://drive.google.com/file/d/1R16jhungS3Yk-1d6Hz8F7gWL7mUCq7du/preview" width="640" height="360"></iframe>
-          <p>This was when instantiation of polar bears was set to the column collision, so the number of polar bears easily went up when moving around, causing this firework of polar bears and the computer to die.</p>
-          <iframe src="https://drive.google.com/file/d/1lReMozc8HfwmvNcWNaRxafFcP0MJMyqB/preview" width="640" height="340"></iframe>
-          <p>The beautiful top-down view of the buildings and the attached lightings. The buildings, as they are on the growing columns, are also scaling, therefore creating this visual illustion in the sense that things are changing and would never be the same.</p>
-        </div>
-
-      </div>
-
-<!-- week 4 -->
-      <div class="weeks">
-        <h1>WEEK 4</h1>
-
-        <div class="parts">
-          <h3>UNITY simulation vivarium project—floating<br>experiment1</h3>
-          <iframe src="https://drive.google.com/file/d/1Or2Hkg2X0BUFDGA0X15jqM1c8PngbEO5/preview" width="640" height="480"></iframe>
-          <p>description: <br>
-            This week is the start of this short project. I researched on the predictions of the level of global sea rise and discovered how different places in the world have different conditions to face. In thinking about the difficulty to predict the actual calculation to every single place, I speculated a place where houses can be saved from drowning in a responsive way, in which I am largely referencing the toy of ring toss in water (when buttons pressed, rings in water are bloated up, and the goal is to bloat/toss them onto the stick). Something like this:
-          </p>
-          <img src="https://i.pinimg.com/originals/67/3e/20/673e20eaf7973b49baf1e5512a208a1c.jpg" alt="ring_toss" width="640" height="480">
-          <p>To save people from the drowning condition, houses would be bloated up randomly by pressing some button. The randomness is to reflect the difficulty of disaster prediction. Once the houses get onto the ever-growing column, they should always be on the water surface, as the column would continue to grow according to the water level.
-            <br>In part of getting used to the environment in Unity, I manage to execute these techniques at this stage: rotating the columns, initializing objects from the houses (to look for possible ways to connect the separated houses by the water since there's no land), and particle system as the water power in the form of bubbles to bloat the houses up onto the columns.</p>
-        </div>
-
-        <div class="parts">
-          <p>response to <a href="https://www.gold.ac.uk/goldsmiths-press/publications/the-presence-project/">The Presence Project (Chapter: Experiment)</a></p>
-          <div>
-            <p class="quotes">“As we looked over the maps, the local group regaled us with stories of wartime hardships, local feuds, and changing boundaries caused by economic swings” (132).</p>
-            <p class="thoughts">‘We’ were given an environment and purposely let ‘ourselves’ immersed in the environment with some but limited information. The added layer of local stories and its historical context helped the immersive process in creating something more than just what ‘we’ were seeing to grapple with, and ultimately changing our very raw way of seeing at the beginning. It striked me suddenly in how familiar this scenario sounds—AR technology. Doesn’t it sound like it? The locals being both the engaging and supporting force of the process became the “technology” of the project. With the AR layer of local perspectives and experiences, the map was no longer just a map of graphics, but an interactive data-visualization of the embedded environment. I really enjoyed reading the happenings between the designers of this project and the participating locals. I believe this experiment also belongs to the realm of social practice/socially engaged art where the authorship of the project also extends to the human participants.</p>
-          </div>
-          <div>
-            <p class="quotes">“Local radio stations might be willing to broadcast the soundscape periodically during the day, but this would interfere with the continuous availability that makes the Radioscape an extension of the landscape rather than a special event” (133).</p>
-            <p class="thoughts">It must have been frustrating to encounter this issue when trying to carry the project further, after successfully conducting a workshop that asked elders to come up with questions directed to the other locals. I understand that the quality of being ‘special’ is crucial in this case, since for the locals and the environment, it is having something new trying to reinterpret the ‘existing-old.’ The last part of this quote took me a while, though. In hoping that it was a special event, it indeed was also an extension of the landscape that put the nodes of individual imagination of the landscape out there in order to connect with other nodes of imaginations. Broadcasting on local radio stations in my opinion, could achieve what it fundamentally needed to achieve as well, but of course, not to the expected level. The decision to not lower standards and expectations just for this to ‘work,’ is quite noteworthy and inspiring. Even if this ‘solution’ could test things to some extent, it is decided that this is not one of the “appropriate...means to simulate and test the experiences the proposals would engender – their aesthetics, their social effects, and their cultural implications” (131). The word ‘special’ means more than being special here.</p>
-          </div>
-          <div>
-            <p class="quotes">“the best slogans were slightly ambiguous or detached in tone (‘I am from another country’), or were particular and personal statements (‘I like a few drinks once in a while’). These seemed to escape classification into known forms of public display, invoking curiosity and imagination rather than immediate dismissal” (136).</p>
-            <p class="thoughts">I believe that this was a very realistic observation. It reminds me of the book Understanding Comics: The Invisible Art by Scott McClound, where McCloud talked about the level of relatability and intimacy of content between viewers and the being viewed: less detailed, less realistic characters/objects are more easily attached to by readers in that there are more flexibility for readers for putting themselves into the characters/objects without much conflict or awareness of differences. When it comes to the project in this writing, it may look conflicting at first if to apply McCloud’s theory, but it could be tweaked a little instead of applying directly. If what is displayed is less similar to the forms of public advertisement or propaganda, in this case, ‘ambiguous or detached’ in its social functions and requirements from the people, those people as viewers could be more willing to invite themselves to questioning the real intention (as documented in the writing, the first thing the locals asked the project designers was the main intention behind whatever they were doing) and then project themselves to the displayed and therefore participate. Proven true, the interactions led designers to receive new slogans from the locals.</p>
-          </div>
-        </div>
-
-      </div>
-
-<!-- week 3 -->
-      <div class="weeks">
-        <h1>WEEK 3</h1>
-
-        <div class="parts">
-          <h3><a href="https://shinyshuanyi.cargo.site/GENZine">mini-project: a generative zine</a></h3>
-          <iframe src="https://drive.google.com/file/d/1Oh6DixXFzJZNIaWDSNZbehH5MRWeWj7s/preview" width="640" height="430"></iframe>
-          <h4>short description: </h4>
-          <p>A web generative zine that tells you interesting facts, on demand!</p>
-          <p><a href="https://shiny-niu-wu.github.io/mini-zine/">zine webpage<br>(to be fixed: the web version is currently not working)</a></p>
-          <p><a href="https://github.com/Shiny-Niu-Wu/mini-zine">you can look at the code here on github</a></p>
-          <h4>original idea and brief concept</h4>
-          <p>I always find that zines is a very powerful tool to convey an idea/knowledge efficiently and effectively in a rather short span of time and small layout. Originally, I wanted to create GEN-Zine, a web zine that holds generative trivia content and is specifically for the Gen Z population for daily consume (I know, such a smart name). In short, the zine should provide a trivia knowledge a day, with summarized descrition and key images gathered from the Internet. I also think that both zine and trivia are a media fit for Gen Z who would appreciate interesting stuff but have a relatively short attention span.<br>Given the one-week execution time, my main goal was to get the geneative function working, and then start from what I see and feel then.</p>
-          <h4>rough process and challenges throughout</h4>
-          <p>I started out with drawing a diagram (see week2) with more critical thinking and concept building. But it is always helpful to clearify the compoents of a project with a limited work time. Our instructors Ben and Max reminded us the importance to scale things down, but I sort of learn this as I go through the process.</p>
-          <p>The rough functional steps are 1) topic randomization, 2) data collection, 3) layout alignments, and 4) daily automation.</p>
-          <p>I followed the steps in this order in that each of them is required of its previous step. I first got the website's basic structure up, and then spent a fair amount of time looking for the right api. This is the biggest challenge. For sure I would not be so lucky to find a single api that does it all. I came to the conclusion that it was hard for myself and the Internet to summarize the definition of Gen Z, what their interests are. Moreover, even after collecting some key questions revolving around Gen Z, the Internet could go in all directions, which makes it hard to produce an accurate summarize (both text and image) that I'd like to put in the zine. Finally, I had to make the sacrifice of the Gen Z topic to focus on the goal of making the functionality work. I settled on a trivia database api for providing the interesting texts, and Google Custom Search Json api for the matching images. The Google api provided a search bar which I would need to then extract its search results. Below is the search result of "coke," with attributes setting to get image only and first result only.</p>
-          <iframe src="https://drive.google.com/file/d/1NjOiPWUhEiKQqgJoiO230SIU39FfmiOj/preview" width="640" height="480"></iframe>
-          <p>I wanted the generated trivia question to automatically be the search term of the Google api, and get result for every refresh of page or a click on "gimme more" button. In the scope of time, I only managed to extract the image from a preset search, and has not worked out making the question the default search. This is the reason of what I said previously about setting the search into one image result only. But at least, I was able to manipulate the generated trivia data and insert them onto the 8-page zine layout evenly. I also managed to split a base64 image into even parts and insert them onto the pages. The concept of this visual layout is that trivia questions are just like putting pieces of wonder together into an interesting unexpected, hence splitting the question sentence onto those pages, and have the final answer reveal fully on the last page. Users can then download the zine to local by clicking the button "download zine."</p>
-          <p>There are many parts that still have more work to be done and needed to be solved. Ideally, each time generating a new question, the content of the zine pages should be updated as well. The texts are currently working on the canvas, but not the image because of some difficulties working with the Google api. I kind of like the layout for now, actually. For further development, besides fixing the api workarounds, I am also thinking about adding other ways of interaction by taking the experience out from a screen to the physical world.</p>
-          <p>It is always learning through making. I had some time reviewing some javascript techniques and learning new ones including Jquery usage and some css tricks.</p>
-          <h4>tools and methods</h4>
-          <p>Language: HTML, CSS, javascript, Jquery.<br>Apis: <a href="https://opentdb.com/">Trivia api</a>, <a href="https://developers.google.com/custom-search/v1/overview">Google CSE epi</a>.<br></p>
-          <h4>screen record of project</h4>
-          <iframe src="https://drive.google.com/file/d/1Frw85ZAymWdK68ykJxJ5K91wJoYxjCE4/preview" width="718" height="414"></iframe>
-        </div>
-
-        <div class="parts">
-          <p>response to <a href="http://blogs.ischool.berkeley.edu/ict4se/files/2010/09/Prototypes_prototype.pdf">What do Prototypes Prototype?</a></p>
-          <div>
-            <p class="quotes">“It is common practice to build prototypes in order to represent different states of an evolving design, and to explore options. However, since interactive systems are complex, it may be difficult or impossible to create prototypes of a whole design in the formative stages of a project.” (1)</p>
-            <p class="thoughts">Prototyping in my mind is very much a critical making (what we read about last week on thinking+making) journey. When building something, everything before that was just a big chunk of “process,” but this thought of mine in the past certainly changed after I was introduced to ways of prototyping for interactive media art projects during my undergraduate studies (and definitely would be inspired more here at MDP). Prototyping is not just some kind of a test of a final product, but a cycle of reiterations that never lies a single straight line ahead; a system of roads that are diverted and joint, looped in cycles, and full of unexpected pathways. In fact, I can say from my experiences that prototypes can often lead a project to very different routes from what one expected to be a final.<br>In terms of building interactive systems, this writing reminds me of the very importance to make prototype(s) as stops in the process. It is helpful to stop and think about, if we are too indulged in the making process that we may have not given enough space and time for our critical thinking; or, are we thinking too much until the very last minute that whatever brilliant idea stuck in our heads does not get the chance to be realized?<br>To “stop” is actually to go!"</p>
-          </div>
-          <div>
-            <p class="quotes">“This kind of portrayal of onscreen interface elements as rough and hand-drawn was used in order to focus design discussion on the overall features of a design rather than on specific details of look and feel or implementation (Wong, 1992). Ironically, while the design team understood the meaning of the hand-drawn graphics, other members of the organization became enamored with the sketchy style to the extent that they considered using it in the final artifact...This example shows how the effectiveness of some kinds of prototypes may be limited to a specific kind of audience.” (7)</p>
-            <p class="thoughts">I think this again brings up my previous point of prototypes being not a messy, untraceable point of process to a final product, but a specific stage of effort going forward with critical making. The quote confirms that we should be aware that we are not prototyping merely for the end-vision, but more importantly, for the people along. This also helps us sort out the really important points to hit in creating prototypes before spending too much time only to be ineffective in collecting feedback. A thing about interactive projects is that to people who have a more limited knowledge of complex technology, it is often all the same, between 60% effort and 80% progress. This is dangerous in both directions of doing too much and doing too little, and could get us trapped in the mindset of prototyping for end-product even more, ending up with results “neither good enough nor bad enough to avoid misunderstandings” (11). In the modern world of visual-driven perception, it is important to look beyond that visual layer and provide the ‘right’ information to the user-testers. And it is in this notion where the prototype model really matters.</p>
-          </div>
-          <div>
-            <p class="quotes">“since the prototype was to be shown to a broad audience, an integrated style of prototype was chosen, both to communicate the implementation point and to verify that the piles representation was practically feasible.” (13)</p>
-            <p class="thoughts">From the many example prototypes shown in the writing, it is clear that different audiences have different expectations. Having a broad audience in this case is indeed chaotic, with the feeling of a need to produce a high quality and fidelity product at once to satisfy all. A large leap like that would once again trap us into prototyping for the sole purpose of a final delivery. Even for the finest thing, I do not think there is such a final version of that existing, because all things are prototypes with the hold of aroused questions that push itself and the designer(s) forward to the next ‘prototype.’ More so, following what the writing states: “Sometimes very simple representations make highly effective prototypes” (15), I do not think that integration with intersections of concepts and functions necessarily means more complexity—it means a field of broader purposes (at specific stages). It is the designers’ job to design an efficient, effective, and impactful experience, as “[p]rototypes themselves do not necessarily communicate their purpose” (15). I thank the writing for pointing this crucial perspective to me.</p>
-          </div>
-        </div>
-
-      </div>
-
-<!-- week 2 -->
-      <div class="weeks">
-        <h1>WEEK 2</h1>
-
-        <div class="parts">
-          <p>3 interactive installation (in connection to my creative tech interests)</p>
-          <p><a href="http://www.notabenevisual.com/works/in-order-to-control">in order to control</a></p>
-          <p><a href="https://www.visualatelier8.com/art/narciss-artificial-intelligence-questions-human-self-awareness">narciss</a></p>
-          <p><a href="https://goodvertising.site/the-fun-theory/">the fun theory</a></p>
-        </div>
-
-        <div class="parts">
-          <p>diagrams</p>
-          <p>diagram—narciss</p>
-          <iframe src="https://drive.google.com/file/d/1QidOI25YLLezrI-Br2CsVDN71PPZ7QMh/preview" width="640" height="360"></iframe>
-          <p>diagram—the GEN-Zine<br>(1-2week mini project)</p>
-          <div style="text-align: center"><iframe src="https://drive.google.com/file/d/15e2sa4BVbhqnRzFG9SLd7gV1O-GDXXrD/preview" width="560" height="380"></iframe></div>
-        </div>
-
-        <div class="parts">
-          <p>response to <a href="https://aeon.co/essays/how-yuppies-hacked-the-original-hacker-ethos">The hacker hacked</a></p>
-          <div>
-            <p class="quotes">“the hacker impulse expresses itself via a constellation of minor acts of insurrection, often undertaken by individuals, creatively disguised to deprive authorities of the opportunity to retaliate”</p>
-            <p class="thoughts">I immediately connect this to the coding structure of web scraping, where there often has to be ‘sleep’ functions to temporarily pause the data-scraping process from a website, which could cause suspicion since the process is fast; also better not have many people in the same place scraping from a single source. In the age of data, we look at everything as resources out there that are either available to our hands or should be available, chunks of information that could be further repurposed. The hard part is always to find a middle ground, even with various licenses available. Some data is not meant to be publicly visible, but people just get smarter and better at finding loopholes in both technology designs and information regulations. Putting these adventures of findings as constellations of acts is kind of poetic, though.</p>
-          </div>
-          <div>
-            <p class="quotes">“Each group defines itself against the other, settling into a stagnant trench warfare. The individual activists frequently end up demoralised, complaining within echo-chambers about their inability to impact ‘the system’. They build an identity based on a kind of downbeat martyrdom, keeping themselves afloat through a fetishised solidarity with others in the same position.”</p>
-            <p class="thoughts">This is so true for other social events as well, especially the politics. And those individuals claim that they are individuals to combat the allegation of being blind followers with the ‘fetishised solidarity’ with others. They even take their acclaimed inability to fight with the systems and exaggerate it, somehow thinking this would legitimize this solidarity in the beliefs against the current.<br>This could be implying the phenomenon of ‘cultured young people’ in Taiwan where the word ‘culture’ here has to interestingly associate with both the subcultural hipster style and the current Taiwanese politics. In fact, more and more public workshops on ‘social hacking’ appear and are seemed to be led by those people. Whatever act in and out of itself could never step away from politics. From all of these we could also see hints of the practice of hacking growing, from a subculture to a slowly dominating culture.</p>
-          </div>
-          <div>
-            <p class="quotes">“It thus becomes an assertion of individual defiance of social norms. The byproduct of such exploration is pragmatic knowledge, the disruption of standard patterns of thought, and also dealienation – you see what’s behind the interfaces that surround us, coming closer to the reality of our social world.”</p>
-            <p class="thoughts">I think this brings to the discussion of the complicated definition of being prosocial or antisocial. Hacking as suggested by the article is about breaking standards to open accesses and therefore opportunities, which in traditional sense is considered anti-social for not following the preset norms. But when hacking is associated with the digital platform that is already open (still exclusive for those who do not have access to the internet and a device), it almost feels rational and unattackable to have things on the platform to be consistent in open access. Otherwise you should not host it on the free platform but another platform that aligns your values on the hackable and shareable open source. And because hacking could be for others and for more opportunities for the general public, it becomes prosocial. It is not essentially about a hacker’s personal leanings of whichever side, but more so about his/her/their standing point of view—the spirit of the ‘way of being.'</p>
-          </div>
-        </div>
-
-      </div>
 
 <!-- week 1 -->
       <div class="weeks">
         <h1>WEEK 1</h1>
 
         <div class="parts">
-          <p>3 less common creative technology tools:</p>
-          <p><a href="https://vcvrack.com/">vcv rack</a></p>
-          <p><a href="https://autodeskresearch.com/projects/dreamcatcher">dreamcatcher</a></p>
-          <p><a href="https://www.tinkamo.com/">tinkamo</a></p>
-        </div>
 
-        <div class="parts">
-          <p>3 creative projects of inspirations:</p>
-          <p><a href="https://www.dailytouslesjours.com/en/work/air">Amateur Intelligence Radio (AIR): A radio show hosted by a building</a></p>
-          <p><a href="https://ip-poetry.findelmundo.com.ar/index.html">the ip poetry project</a></p>
-          <p><a href="https://www.storynest.com/pix/_4proj/ds_bloodlines/p0.php?lang=en">bloodlines</a></p>
-        </div>
-
-        <div class="parts">
-          <p>response to <a href="http://opendesignnow.org/index.html%3Fp=434.html">CRITICAL MAKING</a></p>
-          <div>
-            <p class="quotes">“Rather than just bemoaning the restrictions placed on users by institutionalized technological systems, engaged makers have the increasing ability and opportunity to constitute and construct alternatives.”</p>
-            <p class="thoughts">One has to engage in order to be engaged. Here I am referring to which I believe is a core spirit of social practice/socially engaged art. Like critical making, to engage “viewers” and make them into “participants,” is to transfer the ownership of the work, to extend both the conceptual and physical processes of the work, and to reevaluate the values of work (in this case, being put in the museum/getting design awards is not the final and the most honorable ending). And to turn “participants” into “makers,” is to execute what the article suggests as “material interventions,” where each intervention could provide a different setting and therefore a different version of a project; projects become reusable components of thinking and building, a kit for unlimited critical making.</p>
-          </div>
-          <div>
-            <p class="quotes">“The ultimate goal of critical making experiences is not the evocative or pedagogical object intended to be experienced by others, but rather the creation of novel understandings by the makers themselves...The ‘objects’ of critical making are intended to be shared making experiences, curated through both material and textual instructions.”</p>
-            <p class="thoughts">The challenging part of creating something to be outputted to the society is not the process of itself, nor is it the process of outputting. It is the part where the receiver receives that creates the most unexpected and sometimes problematic results/reactions. Artworks, products, or something else, how things are taken and used do not always align with the intended purposes and actual functions of how they should be. Applying this thought onto the quote, we want objects to have both shared experiences and the ability to share experiences. To achieve that, critical makers will have to first convince themselves of their criticality even before engaging with others, otherwise as Marshall McLuhan ironically stated: “You must talk to the media, not to the programmer. To talk to the programmer is like complaining to a hot dog vendor at a ballpark about how badly your favorite team is playing.” That’s how “material and textual instructions” could be prepared enough to then evolve into something that has the capacity to be shared.</p>
-          </div>
-          <div>
-            <p class="quotes">“the ‘push-back’ of the physical electronics – the resistance of reality to our attempts to contain it – is therefore more present...engender a more invested and involved participant”</p>
-            <p class="thoughts">As a creative technologist with the background of interactive media art, I resonate with this sentence as it has always been a crucial concern regarding how deep the audience engages with my work. Adding a physical element to a work may add the incentive for a first interaction between the audience and the work, which could be a key to inspire them to then critically think about it afterwards. Besides the stimulation and fortified impression of having a multi-sensory experience, still, we need to jump from just the oohs and aahs of the magic of new technologies, or at least use it as a base, to then introduce to the general people, including ourselves, the possibility of critical making. The article brought together the often separated social aspect and technical aspect of critiquing the world, and asked us, with the two combined, to become more “invested and involved” as we all could be critical makers.</p>
-          </div>
         </div>
 
       </div>
 
+      <div>
+        <p class="semester">spring 2021 &uarr;</p>
+      </div>
+
+<hr><!-- ______________________________________________________________________ -->
+
+      <div class="projects">
+        <p>main projects:</p>
+        <div class="project_link_group">
+          <p class="project_link"><a href="https://shinyshuanyi.cargo.site/GENZine">The GenZine</a> (week 2-3)</p>
+          <p class="project_link"><a href="https://shinyshuanyi.cargo.site/Polar-Bear-Simulation">Polar Bear Simulation</a> (week 4-5)</p>
+          <p class="project_link"><a href="https://shinyshuanyi.cargo.site/Parasite">Parasite</a> (week 8-11)</p>
+          <p class="project_link"><a href="https://shinyshuanyi.cargo.site/The-Garbage-Truck">The Garbage Truck</a> (week 12)</p>
+        </div>
+      </div>
+
+      <button type="button" class="semester_wrapper"><span style="font-size: 100px;">fall 2020 &darr;</span><br>click to expand / collapse</button>
+
+      <div class="content">
+
+      <!-- week 14 -->
+            <div class="weeks">
+              <h1>WEEK 14</h1>
+
+              <div class="parts">
+                <h2>Crit Week</h2>
+              </div>
+
+            </div>
+
+      <!-- week 13 -->
+            <div class="weeks">
+              <h1>WEEK 13</h1>
+
+              <div class="parts">
+                <h3>GLSL Shaders, workshop with Char Stiles (2/2)</h3>
+                <p>Learning raymarching!</p>
+                <p>I forgot to record the checkpoints, but shaders are fun!</p>
+                <p>Some time left we learned about webcam image controlling, and I quite like how Char described how it works that's similar to the concept of Plato's Eye Feelers — emitting from our eyes, hit stuff and go back into the eyes. That's how we see.</p>
+                <p>Anyway, here's a play with a festive scene.</p>
+                <iframe src="https://drive.google.com/file/d/17Gn9tss2XR7IiVf5K82CA-jcFznDsodv/preview" width="340" height="360"></iframe>
+              </div>
+            </div>
+
+      <!-- week 12 -->
+            <div class="weeks">
+              <h1>WEEK 12</h1>
+
+              <div class="parts">
+                <h3>GLSL Shaders, workshop with Char Stiles (1/2)</h3>
+                <p>Learning what GLSL shaders are and how they work<br>including basic uv(), vector compositing, and sound responding</p>
+                <p>I was able to follow along the in-class tutorial, see the below checkpoint</p>
+                <iframe src="https://drive.google.com/file/d/1TvIJ7-tDPjd9LYbrF-s-FNVg2B80rZ5l/preview" width="380" height="360"></iframe>
+              </div>
+
+              <div class="parts">
+                <h2>GLSL mini project: <a href="https://shinyshuanyi.cargo.site/The-Garbage-Truck">The Garbage Truck</a></h2>
+                <p>prompt: make shader visuals that respond to a sound</p>
+                <iframe src="https://drive.google.com/file/d/1tusXSu9z02GzFLTzDsHm6Qpn6D_VzcVd/preview" width="800" height="450"></iframe>
+                <p>The background melody comes from a famous music piece — Maiden's Prayer. But as a Taiwanese, we are most familiar with its ubiquitous existence as the broadcasting music of a garbage truck. In Taiwan, whenever this melody is played loudly and on loop in the streets, people know that garbage trucks have arrived.</p>
+                <iframe src="https://drive.google.com/file/d/16-J3Cd7C6w-16dxFZZvgcQCkYhzTf6Fd/preview" width="640" height="340"></iframe>
+                <iframe src="https://drive.google.com/file/d/1kdYnudVUN9jfccb3OSRVsARYB_stQdO_/preview" width="640" height="340"></iframe>
+                <p>design choices: truck is yellow, people gather around the road, lots of red lights in traffic, all over the city, loud annoucement to everyone<br>looks like this</p>
+                <iframe src="https://drive.google.com/file/d/1SGpdn2zp70LlbyZlkxBX12kYIai_Zuwh/preview" width="800" height="450"></iframe>
+                <p>To create a more iconic scene......</p>
+                <p>collage with images, including the iconic Taiwanese blue-and-white slippers</p>
+                <iframe src="https://drive.google.com/file/d/13hW21OWJnHxapddKTr0p-Me__Zo8Pu28/preview" width="320" height="240"></iframe>
+                <iframe src="https://drive.google.com/file/d/1uS9Cqmip1U2i2AaNff-1fAl1ShpAV_YE/preview" width="320" height="240"></iframe>
+                <p>The final presentation is shown at the very beginning.</p>
+                <p>Here's how the visuals look with the code layered on top</p>
+                <iframe src="https://drive.google.com/file/d/1nZgTUSMB4fxp6H2FCIIW92CpSynd3c7y/preview" width="640" height="480"></iframe>
+                <pre class="line-numbers">
+                  <code class="language-java">
+      float getBPMVis(float bpm){
+
+              // this function can be found graphed out here :https://www.desmos.com/calculator/rx86e6ymw7
+      	float bps = 120./bpm; // beats per second
+      	float bpmVis = tan((time*PI)/bps);
+      	// multiply it by PI so that tan has a regular spike every 1 instead of PI
+      	// divide by the beat per second so there are that many spikes per second
+      	bpmVis = clamp(bpmVis,0.,10.);
+      	// tan goes to infinity so lets clamp it at 10
+      	bpmVis =  abs(bpmVis)/20.;
+      	// tan goes up and down but we only want it to go up
+      	// (so it looks like a spike) so we take the absolute value
+      	// dividing by 20 makes the tan function more spiking than smoothly going
+      	// up and down, check out the desmos link to see what i mean
+      	bpmVis =  1.+(bpmVis*0.05);
+      	// we want to multiply by this number, but its too big
+      	// by itself (it would be too stroby) so we want the number to multiply
+      	// by to be between 1.0 and 1.05 so its a subtle effect
+      	return bpmVis;
+      }
+
+      void main() {
+
+          vec2 pos = uv(); // origin is in center
+
+          float angle = fract(pos.x/abs(pos.y*.1));
+
+          float r = fract(angle + time);
+
+          float bpmVis = getBPMVis(43.);
+
+      	float b = tan(tan(length(pos*10.)) * bands.y * 5.);
+
+          vec4 color = vec4(bpmVis,r,b,1.);
+
+          gl_FragColor = color;
+      }
+                  </code>
+                </pre>
+                <p>audio source: <a href="https://youtu.be/1SXn17vTba0">youtube</a></p>
+              </div>
+
+              <div class="parts">
+                <p>response to <a href="https://www.globalspec.com/reference/64675/203279/chapter-1-the-electronic-as-post-optimal-object"><i>The Electronic as Post-optimal Object</i></a> by Anthony Dunne and<br>
+                  <a href="https://www.versobooks.com/books/2742-radical-technologies">Chapter 2 Internet of Things, <i>Radical Technologies</i></a> by Adam Greenfield
+                </p>
+                <div>
+                  <p class="quotes">“a not-insignificant percentage of the population has so decisively internalized the values of the market for their labor that the act of resculpting themselves to better meet its needs feels like authentic self-expression” (Greenfield 36).</p>
+                  <p class="thoughts">Even if we have our own standards looking at things, those criteria would be based on the existing system and mechanism, and our imagination of how things work within it. There are already a set of standards that come along with the products, and so our goals are mostly to see if our standards meet with the set standards. This also includes the decisions we make on and for ourselves in how we should react to things. The word “resculpting” in the quote then becomes interesting and ambiguous in thinking if we could really escape from the system and really decide for ourselves, if we’re only canceling Amazon order (38) for making while a correct order or another order on another platform, and if we’re choosing uber owing to it being the most instant resource when we defaultly search on Google Maps for directions. We have freedom with limitations, but we cannot easily imagine freedom outside of the limited boundaries. I believe that the real creativity lies outside of those boundaries, and maybe not even far, but just right next to the built walls of the authentic normal, the accurate, one and only truth of the Internet of Things. If the Self is not considered one of the “things,” then perhaps where we should be heading is the Internet of Self.</p>
+                </div>
+                <div>
+                  <p class="quotes">“once these prototype elements have been subjected to the extreme rationalization required by mass production, they become reduced to abstract ultraminiaturized electronic components. Their modernist poetry, based on truth to materials, is lost” (Dunne 7).</p>
+                  <p class="thoughts">This reminds me of a TV drama scene about a very junior intern at a finance firm. Every intern at this firm has to speak about their unique value to the company during a performance evaluation, and while other more competent interns respond in confidence each of their own strength, this junior intern says something that shockingly meets the supervisor’s expectations—it is wrong for one to talk about one’s value, for that one’s value is defined by the customers’ needs. I find this scene related to the topic here. It seems that values are defined by functionalities, and functionalities are defined by purposes. Functionalities and poetry seem to be on the two sides of a spectrum. Can we really blame people for not appreciating the “true values” of electronics (same for all other products) if being “poetic” has never been the purpose of its making when designed? Sure, as designers, we look at things differently, maybe not essentially deeper or wider, but perhaps from the other side or alternative angles. If no one does, we are the ones that question the distance between the two poles of the spectrum. Plus, poetry could always be “added” to a product after it is made with only functionality. Much like many art pieces out there. Oops. Just some thoughts.</p>
+                </div>
+                <div>
+                  <p class="quotes">“Robert Rauschenberg’s Oracle...has had its technology updated three times over thirty years, but its materiality and cultural meaning remain unchanged. Cultural obsolescence need not occur at the same rate as technological obsolescence” (Dunne 19).</p>
+                  <p class="thoughts">This is an example straight to the point of this chapter of the book. To update the technology while retaining the materiality, is to dematerialize technology of purpose, form, function, and our interactive experience with it. As for its cultural meaning, I assume that it means that it is in contrast not changed by force or purpose, but is shifted forward to keep up with the times. It is impossible for the cultural meaning to remain unchanged 100%, for we cannot deliberately make up a cultural meaning. But we can invent technology. Materiality is something that holds our conventional perception of technology, from which the author asks us to step away to better observe the true “rate” of natural forms and happenings (of technology and ourselves). Laws need to be updated and modified in order to keep up with the culture. But like the example in this quote, interesting things happen in between the lags. If technology is not defined by materiality, nor is it defined by cultural meaning, I suppose that it is defined by the ways and processes of human interaction.</p>
+                </div>
+              </div>
+
+            </div>
+
+      <!-- week 11 -->
+            <div class="weeks">
+              <h1>WEEK 11</h1>
+
+              <div class="parts">
+                <h2>Thanksgiving: no class</h2>
+              </div>
+
+              <div class="parts">
+                <h2><a href="https://shinyshuanyi.cargo.site/Parasite">Parasite</a></h2>
+                <h3>Digital Ecologies Project, collaboration with Nayoung Kwon</h3>
+                <p>physical computing and web programming<br>technology: photon, piezo element, pulse sensor, LED, wires<br>coded with C++ in particle.ai</p>
+                <iframe src="https://drive.google.com/file/d/1ViLYuS8RPLF5FZvH5lfFFh1Pnc7Zvuhg/preview" width="600" height="320"></iframe>
+                <div class="center"><a href="https://shiny-niu-wu.github.io/parasite/">becoming a virtual parasite...</a></div>
+                <iframe src="https://drive.google.com/file/d/1MUCdu6a3pf4xy09vyf-OW45gi9PPoOKi/preview" width="270" height="360"></iframe>
+                <p>a parasite...</p>
+                <iframe src="https://drive.google.com/file/d/1a2X3WRc7R_yJQYbdSFvbA8Wd-UphjwgW/preview" width="480" height="400"></iframe>
+                <p>will only exist...</p>
+                <iframe src="https://drive.google.com/file/d/1MKqV7nFWUmEwOPUetH1RtBjYYVB18Ote/preview" width="340" height="460"></iframe>
+                <p>when its host exists.</p>
+                <iframe src="https://drive.google.com/file/d/1LLXj1Zmk6BV0nJ3Kjm-FP5_H3b7i2lXA/preview" width="640" height="480"></iframe>
+                <p>the frequency of existing...</p>
+                <iframe src="https://drive.google.com/file/d/1iELVMaH2Vjx8R_awVMfYsGa005NCAgdq/preview" width="360" height="480"></iframe>
+                <p>from the working table, from a pulse, from everyday life</p>
+                <iframe src="https://drive.google.com/file/d/1W5pgSvKjnlF0BnWf-qGJglJaiIt2kR5c/preview" width="640" height="300"></iframe>
+                <p>between things that are controlled and uncontrolled</p>
+                <div class="center"><p>(meant to be)</p></div>
+                <p>but perhaps the host would only recognize its existence</p>
+                <iframe src="https://drive.google.com/file/d/1lssjFkdCubZexlxjdi3iZQF0ZuomOjSg/preview" width="300" height="320"></iframe>
+                <p>with the attachment from a virtual parasite</p>
+                <iframe src="https://drive.google.com/file/d/1KaZoZHR-aXUtnkjUn3aRybrn_7x3K9rn/preview" width="300" height="320"></iframe>
+                <p>some taps of frequency</p>
+                <iframe src="https://drive.google.com/file/d/1V5kALWjhtQMlnOYLoABdDrrXQRJSBtHy/preview" width="640" height="460"></iframe>
+                <p>taps in our digital life</p>
+                <iframe src="https://drive.google.com/file/d/1iaG-n4kkxEGw60EIA4zPZ3MuTiBFqSyw/preview" width="300" height="320"></iframe>
+                <p>and will only exist there</p>
+                <div class="center"><p>(some time in the future)</p></div>
+                <hr>
+                <p>Contribution:
+                  <br>Title: Nayoung
+                  <br>Concept: Shiny
+                  <br>Web and photon code: Shiny
+                  <br>Web Illustration: Nayoung
+                  <br>XD illustration: Shiny
+                  <br>Physical circuits and prototyping: Nayoung (pulse sensor, wearable wristband) & Shiny (piezo element)
+                </p>
+              </div>
+
+            </div>
+
+      <!-- week 9-10 -->
+            <div class="weeks">
+              <h1>WEEK 9-10</h1>
+
+              <div class="parts">
+                <h3>Digital Ecologies</h3>
+                <p>In class: Learning how to define data events to publish onto the web console, and subscribing to each other's events.</p>
+                <p>project brainstorming:
+                  <br>Much opposite to how digital technologies bring humanity closer, I imgaine those "digital creatures" would only need themselves with a feedback loop of self-triggering events. I find two piezo elements in my basic sensor pack and start thinking about a looping scene — if there would be some kind of motor physically in between the two piezos, the motor would be triggered to spin for some degree by the sensed touches of the piezos, which then would hit the other piezo element with an attached object (to the motor), which would then spin again for touching a piezo, and have the attached object spin along to hit the piezo. And this would go on in repetition.
+                  <br> I have always been largely inspired by the works of video art artist Nam June Paik, especially the <a href="https://publicdelivery.org/nam-june-paik-tv-buddha/">TV Buddha series</a> series. The piezo and motor interaction loop is almost like physicalizing and visuallizing the back and forth of the Buddha's stare in the air.
+                </p>
+              </div>
+
+            </div>
+
+      <!-- week 8 -->
+            <div class="weeks">
+              <h1>WEEK 8</h1>
+
+              <div class="parts">
+                <h3>Digital Ecologies</h3>
+                <p>sending sensor data as variables to the browser</p>
+                <p>Connecting photon boards and sensors in South Korea and Taiwan, learning photon board and experimenting with potentiometer data collecting</p>
+                <p><a href="photon.html">Experiment page with Nayoung</a> The shapes on the page each responds to Nayoung's or Shiny's collected data from a potentiometer. When both photons are online, the page would display changing shapes based on the two potentiometers' inputs.</p>
+                <iframe src="https://drive.google.com/file/d/1mc9Ioeq1eMZwm0fcDf-gfFIu6Coq4jJr/preview" width="640" height="480"></iframe>
+              </div>
+
+              <div class="parts">
+                <p>response to <a href="https://www.amazon.com/Vehicles-Experiments-Psychology-Valentino-Braitenberg/dp/0262521121">VEHICLES-Experiments in Synthetic Psychology</a></p>
+                <div>
+                  <p class="quotes">“In the long run it will be seen to move in a complicated trajectory, curving one way or the other without apparent good reason” (5).</p>
+                  <p class="thoughts">It’s interesting to read that the designed movements, though self-automating, could lead to unplanned and even unexpected results. The fact that everything is a result of the sum of all forces on earth (5) speaks out loud this writing’s perspectives of being alive—to be responsive. Even though as a maker, one would mostly know the mechanics and theories of what one is building, the fun part is that besides this “self-driven” force that we designed, there are so many factors embedded in the preconditions or current environment that could affect the overall experience, making it more complicated than what we originally focused on to observe. It is impossible to test out an observation with only a single force, not until we try and try “escaping until it safely reaches places where the influence of the source is scarcely left” (9).</p>
+                </div>
+                <div>
+                  <p class="quotes">“Their characters are quite opposite. Both dislike sources...Vehicle 2a is a COWARD, you would say...Vehicle 2b is AGGRESSIVE, obviously” (9).</p>
+                  <p class="thoughts">Statements like these are made after observations of the vehicles’ movements, which, interestingly, we somehow already predicted. Observing the movements is just a process during the experiments to test out if our predictions would be true. But it reads here that only after we see the actions performed by those vehicles, we then believe the nature of these predicted “behaviors,” and that’s when we start to further interpret them. Being a COWARD or being AGGRESSIVE is something you would describe a person. So what does it mean when we apply these human descriptions to the vehicles as their unique characteristics? While it is easy to associate sensors and motors of a machine as sensors and effectors of a neural network inside a human body, what separates us humans from those machines is our ability to think and act independently. Those creatures’ “independent” behaviors are coded/designed behaviors, which make their instincts predictable patterns under the Nature that we ourselves create (17). As we predict the patterns of the designed behaviors, perhaps, the cowardness and aggressiveness lie in the smaller steps that build up the patterns where we allow the machines to be independent.</p>
+                </div>
+                <div>
+                  <p class="quotes">“There is something very crude about a vehicle that can only be excited...and knows no soothing or relaxing stimuli” (10).</p>
+                  <p class="thoughts">We build things for them to function. If we do not tell them to stop, what they do is to keep functioning, regardless of what their designed actions are. An actual-living creature that behaves similarly is a goldfish, which would not stop eating as long as food is presented, even if that means eating to death. From that, “we can easily see how much the-more-the-merrier behavior could lead to disaster” (15). Reading to this point, I found myself not really looking at the graphs of vehicles as vehicles, but actual living creatures, and perhaps, human beings. The scary thing is that I do not find it out of place when throwing the same questions or observations (like this quote) back at ourselves.</p>
+                </div>
+              </div>
+
+            </div>
+
+      <!-- week 7 -->
+            <div class="weeks">
+              <h1>WEEK 7</h1>
+
+              <div class="parts">
+                <h2>Crit Week</h2>
+              </div>
+
+            </div>
+
+      <!-- week 6 -->
+            <div class="weeks">
+              <h1>WEEK 6</h1>
+
+              <div class="parts">
+                <p>response to <a href="https://www.bloomberg.com/graphics/2015-paul-ford-what-is-code/">What is Code</a></p>
+                <div>
+                  <p class="quotes">“Your competitor has an animated shopping cart that drives across the top of the screen at checkout. That cart remembers everything customers have ever purchased and generates invoices on demand. Your cart has no memory at all.”</p>
+                  <p class="thoughts">Compete, compete, and compete. Just because your competitors have some cool features you do not have, you are going to incorporate them into your work, and think that this will make you cool, too? Well, you’re not wrong, not 100% though. But is the premise of success having the same memory even if we’re on a different platform? How can we code memory? Perhaps we can link this to the discussion of code effectiveness. Code effectiveness got two ways: the effectiveness of code in aesthetics, and the effectiveness of code in functionalities. In this quote I can see both. Is there another way of code effectiveness? That is not about functions and aesthetics, but maybe feelings? What kind of memory would that be composed of?</p>
+                </div>
+                <div>
+                  <p class="quotes">“It’s miraculous that we have mobile phones, but it’s equally miraculous that we can charge them.”</p>
+                  <p class="thoughts">Yes, indeed. Phones are taking over our lives, but while they are owning us, we are still their owners. The social feeds on the phones charge us, and we charge them in return, but just for us to be charged by them more later. Phones are hardwares, and our interactions with phones are softwares. What is considered the code here? I think humans are the running code here. Our (the code’s) existence enables the interactions (the softwares) to be performed on phones (the hardwares). Hence, the miraculous thing here is that it all goes back to philosophical and seem-to-be useless discussion of our existences. Those discussions become powerful as more and more things are self-defined. Phones holding those discussions become powerful, too.<br>“If coders don’t run the world, they run the things that run the world.”</p>
+                </div>
+                <div>
+                  <p class="quotes">“An excellent language! But it doesn’t really let you organize things...we have this data structure for our customers (name, address, and so forth), and we have all these functions for manipulating that data (update_address, send_bill, delete_account), but the thing is, those functions aren’t related to the data except by the naming convention...So what if...we made a little box called Customer (call it a “class,” as in the taxonomical sense, like a Customer is a subclass of the species human, which is a subclass of mammal, etc.), and we put the data and methods relating to customers into that box.”</p>
+                  <p class="thoughts">As a person who also codes (not sure if I am qualified as a “real programmer” like those in the East coast of USA stated by this article), I do not know where to start in responding to this large brick of quote. A lot of things are arbitrary in coding, and good programmers try to assign each to its unique name, those that resonate with its real-life representation (in this case, customers), or its functionalities (for example, to map();) while there are no real customers or maps in the text editor. The language of coding is poetic; the act of coding the language of coding is poetic. Yet interestingly, the poetic characteristics of coding is to make coding itself less arbitrary, which in other words, less poetic. The poetic aspect of coding also changes the power dynamics: who are we to assign a “class” to customers, and let them become data receptors to perform functions assigned? Are we and the customers more intimate or less intimate in this process?<br>I find this description very interesting: “Every time we have a new customer we make a new instance of our class. Code can be a black box, with tentacles and wires sticking out, and you don’t need to—don’t want to—look inside the box. You can just put a couple of boxes next to each other, touch their tentacles together, and watch their eldritch mating.”</p>
+                </div>
+              </div>
+
+            </div>
+
+      <!-- week 5 -->
+            <div class="weeks">
+              <h1>WEEK 5</h1>
+
+              <div class="parts">
+                <p>3 art/design simulation project</p>
+                <p><a href="https://www.instagram.com/p/CGKmmu7lNN-/">quantum memories, by REFIK ANADOL in collaboration with Google</a></p>
+                <p><a href="http://iancheng.com/emissaries">emissaries (trilogy), by IAN CHENG</a></p>
+                <p><a href="https://madmuseum.org/exhibition/the-eyes-level">the eye's level, by ANNE LINDBERG</a></p>
+              </div>
+
+              <div class="parts">
+                <h3><a href="https://shinyshuanyi.cargo.site/Polar-Bear-Simulation">UNITY simulation vivarium project—floating</a></h3>
+                <iframe src="https://drive.google.com/file/d/1FnW-jy-RF2RHr5TvQBR-mD-0CZCPYGhg/preview" width="640" height="480"></iframe>
+                <p><i>Please watch with audio on.</i></p>
+                <p>process:
+                  <br><br>Last week, there were a lot of mechanisms that I were not able to execute. And given the short duration of 1.5week, I was asked to think about the scale of this project, and really focus on the main action that I would like to show.
+                  <br><br>Tweaking concept:
+                  I imagine in a world that is constantly floading, humans are already well-prepared with changeable living structures. From more research I did on global sea level rising and various coping strategies, I have come to understand more about the effects of flooding, which has a lot to do with where the houses are and the geographical altitude of locations.
+                  <br>In this rough experiment, I speculate that all hosues are mounted on a column base, which will detect the sea level and rise the houses to match with the height. In other words, the houses would never drown. But that means at the same time, sacrifice of land usage, and segragation of people in their own houses.
+                  <br>But <b>no matter how much we prepared, we can never prepare for the unpredicted.</b> Here I brought in <b>polar bears as an ironic and worth pondering subject</b> that has to with the melting of ice————the shortening of ice and the rising of never-drowned houses. We could actually try to manage all the human activities that worsen the situation, but we could not manage if nature comes back to us. We could have never expected polar bears to destroy the columns, and the hosues fall down into the water.
+                  <br><br>The first-ever polar bear in the scene would be controlled by the "player" with the four directions on keyboard. When the polar bear collides with a column, the column disappeared, and the houses come down. As the houses touch the bottom of the water, they transform into polar bears.
+                </p>
+                <iframe src="https://drive.google.com/file/d/1ckQdn1QsP6A4twzHBjwNeHf5-7QDUqRn/preview" width="640" height="480"></iframe>
+                <p>
+                  This is a second prototype.
+                  <br>I got rid of the water ring toss idea, as well as the particle system, as now the major force would be the polar bears. In this version of prototype, the particles are removed, and the instantiated object has become a polar bear. There are a lot of scripting, especially with the control of water rising and being able to adjust the columns' growth according to that.
+                  <br>There is also the matter of lighting, texturing, etc., which I have learned a lot from doing this project. Some fun went to the setting up of cameras, one of those following the rising water level, one following the first-ever polar-bear, and then one observing the chaotic ground underwater. And last but not least, a questionable touch of adding audio "up, up, up" for the houses, and "down, down, down" for the polar bears whenever they collide with the columns.
+                  <br><br>Here are some amazing screenshots from the process of making this project:
+                </p>
+                <iframe src="https://drive.google.com/file/d/1R16jhungS3Yk-1d6Hz8F7gWL7mUCq7du/preview" width="640" height="360"></iframe>
+                <p>This was when instantiation of polar bears was set to the column collision, so the number of polar bears easily went up when moving around, causing this firework of polar bears and the computer to die.</p>
+                <iframe src="https://drive.google.com/file/d/1lReMozc8HfwmvNcWNaRxafFcP0MJMyqB/preview" width="640" height="340"></iframe>
+                <p>The beautiful top-down view of the buildings and the attached lightings. The buildings, as they are on the growing columns, are also scaling, therefore creating this visual illustion in the sense that things are changing and would never be the same.</p>
+              </div>
+
+            </div>
+
+      <!-- week 4 -->
+            <div class="weeks">
+              <h1>WEEK 4</h1>
+
+              <div class="parts">
+                <h3>UNITY simulation vivarium project—floating<br>experiment1</h3>
+                <iframe src="https://drive.google.com/file/d/1Or2Hkg2X0BUFDGA0X15jqM1c8PngbEO5/preview" width="640" height="480"></iframe>
+                <p>description: <br>
+                  This week is the start of this short project. I researched on the predictions of the level of global sea rise and discovered how different places in the world have different conditions to face. In thinking about the difficulty to predict the actual calculation to every single place, I speculated a place where houses can be saved from drowning in a responsive way, in which I am largely referencing the toy of ring toss in water (when buttons pressed, rings in water are bloated up, and the goal is to bloat/toss them onto the stick). Something like this:
+                </p>
+                <img src="https://i.pinimg.com/originals/67/3e/20/673e20eaf7973b49baf1e5512a208a1c.jpg" alt="ring_toss" width="640" height="480">
+                <p>To save people from the drowning condition, houses would be bloated up randomly by pressing some button. The randomness is to reflect the difficulty of disaster prediction. Once the houses get onto the ever-growing column, they should always be on the water surface, as the column would continue to grow according to the water level.
+                  <br>In part of getting used to the environment in Unity, I manage to execute these techniques at this stage: rotating the columns, initializing objects from the houses (to look for possible ways to connect the separated houses by the water since there's no land), and particle system as the water power in the form of bubbles to bloat the houses up onto the columns.</p>
+              </div>
+
+              <div class="parts">
+                <p>response to <a href="https://www.gold.ac.uk/goldsmiths-press/publications/the-presence-project/">The Presence Project (Chapter: Experiment)</a></p>
+                <div>
+                  <p class="quotes">“As we looked over the maps, the local group regaled us with stories of wartime hardships, local feuds, and changing boundaries caused by economic swings” (132).</p>
+                  <p class="thoughts">‘We’ were given an environment and purposely let ‘ourselves’ immersed in the environment with some but limited information. The added layer of local stories and its historical context helped the immersive process in creating something more than just what ‘we’ were seeing to grapple with, and ultimately changing our very raw way of seeing at the beginning. It striked me suddenly in how familiar this scenario sounds—AR technology. Doesn’t it sound like it? The locals being both the engaging and supporting force of the process became the “technology” of the project. With the AR layer of local perspectives and experiences, the map was no longer just a map of graphics, but an interactive data-visualization of the embedded environment. I really enjoyed reading the happenings between the designers of this project and the participating locals. I believe this experiment also belongs to the realm of social practice/socially engaged art where the authorship of the project also extends to the human participants.</p>
+                </div>
+                <div>
+                  <p class="quotes">“Local radio stations might be willing to broadcast the soundscape periodically during the day, but this would interfere with the continuous availability that makes the Radioscape an extension of the landscape rather than a special event” (133).</p>
+                  <p class="thoughts">It must have been frustrating to encounter this issue when trying to carry the project further, after successfully conducting a workshop that asked elders to come up with questions directed to the other locals. I understand that the quality of being ‘special’ is crucial in this case, since for the locals and the environment, it is having something new trying to reinterpret the ‘existing-old.’ The last part of this quote took me a while, though. In hoping that it was a special event, it indeed was also an extension of the landscape that put the nodes of individual imagination of the landscape out there in order to connect with other nodes of imaginations. Broadcasting on local radio stations in my opinion, could achieve what it fundamentally needed to achieve as well, but of course, not to the expected level. The decision to not lower standards and expectations just for this to ‘work,’ is quite noteworthy and inspiring. Even if this ‘solution’ could test things to some extent, it is decided that this is not one of the “appropriate...means to simulate and test the experiences the proposals would engender – their aesthetics, their social effects, and their cultural implications” (131). The word ‘special’ means more than being special here.</p>
+                </div>
+                <div>
+                  <p class="quotes">“the best slogans were slightly ambiguous or detached in tone (‘I am from another country’), or were particular and personal statements (‘I like a few drinks once in a while’). These seemed to escape classification into known forms of public display, invoking curiosity and imagination rather than immediate dismissal” (136).</p>
+                  <p class="thoughts">I believe that this was a very realistic observation. It reminds me of the book Understanding Comics: The Invisible Art by Scott McClound, where McCloud talked about the level of relatability and intimacy of content between viewers and the being viewed: less detailed, less realistic characters/objects are more easily attached to by readers in that there are more flexibility for readers for putting themselves into the characters/objects without much conflict or awareness of differences. When it comes to the project in this writing, it may look conflicting at first if to apply McCloud’s theory, but it could be tweaked a little instead of applying directly. If what is displayed is less similar to the forms of public advertisement or propaganda, in this case, ‘ambiguous or detached’ in its social functions and requirements from the people, those people as viewers could be more willing to invite themselves to questioning the real intention (as documented in the writing, the first thing the locals asked the project designers was the main intention behind whatever they were doing) and then project themselves to the displayed and therefore participate. Proven true, the interactions led designers to receive new slogans from the locals.</p>
+                </div>
+              </div>
+
+            </div>
+
+      <!-- week 3 -->
+            <div class="weeks">
+              <h1>WEEK 3</h1>
+
+              <div class="parts">
+                <h3><a href="https://shinyshuanyi.cargo.site/GENZine">mini-project: a generative zine</a></h3>
+                <iframe src="https://drive.google.com/file/d/1Oh6DixXFzJZNIaWDSNZbehH5MRWeWj7s/preview" width="640" height="430"></iframe>
+                <h4>short description: </h4>
+                <p>A web generative zine that tells you interesting facts, on demand!</p>
+                <p><a href="https://shiny-niu-wu.github.io/mini-zine/">zine webpage<br>(to be fixed: the web version is currently not working)</a></p>
+                <p><a href="https://github.com/Shiny-Niu-Wu/mini-zine">you can look at the code here on github</a></p>
+                <h4>original idea and brief concept</h4>
+                <p>I always find that zines is a very powerful tool to convey an idea/knowledge efficiently and effectively in a rather short span of time and small layout. Originally, I wanted to create GEN-Zine, a web zine that holds generative trivia content and is specifically for the Gen Z population for daily consume (I know, such a smart name). In short, the zine should provide a trivia knowledge a day, with summarized descrition and key images gathered from the Internet. I also think that both zine and trivia are a media fit for Gen Z who would appreciate interesting stuff but have a relatively short attention span.<br>Given the one-week execution time, my main goal was to get the geneative function working, and then start from what I see and feel then.</p>
+                <h4>rough process and challenges throughout</h4>
+                <p>I started out with drawing a diagram (see week2) with more critical thinking and concept building. But it is always helpful to clearify the compoents of a project with a limited work time. Our instructors Ben and Max reminded us the importance to scale things down, but I sort of learn this as I go through the process.</p>
+                <p>The rough functional steps are 1) topic randomization, 2) data collection, 3) layout alignments, and 4) daily automation.</p>
+                <p>I followed the steps in this order in that each of them is required of its previous step. I first got the website's basic structure up, and then spent a fair amount of time looking for the right api. This is the biggest challenge. For sure I would not be so lucky to find a single api that does it all. I came to the conclusion that it was hard for myself and the Internet to summarize the definition of Gen Z, what their interests are. Moreover, even after collecting some key questions revolving around Gen Z, the Internet could go in all directions, which makes it hard to produce an accurate summarize (both text and image) that I'd like to put in the zine. Finally, I had to make the sacrifice of the Gen Z topic to focus on the goal of making the functionality work. I settled on a trivia database api for providing the interesting texts, and Google Custom Search Json api for the matching images. The Google api provided a search bar which I would need to then extract its search results. Below is the search result of "coke," with attributes setting to get image only and first result only.</p>
+                <iframe src="https://drive.google.com/file/d/1NjOiPWUhEiKQqgJoiO230SIU39FfmiOj/preview" width="640" height="480"></iframe>
+                <p>I wanted the generated trivia question to automatically be the search term of the Google api, and get result for every refresh of page or a click on "gimme more" button. In the scope of time, I only managed to extract the image from a preset search, and has not worked out making the question the default search. This is the reason of what I said previously about setting the search into one image result only. But at least, I was able to manipulate the generated trivia data and insert them onto the 8-page zine layout evenly. I also managed to split a base64 image into even parts and insert them onto the pages. The concept of this visual layout is that trivia questions are just like putting pieces of wonder together into an interesting unexpected, hence splitting the question sentence onto those pages, and have the final answer reveal fully on the last page. Users can then download the zine to local by clicking the button "download zine."</p>
+                <p>There are many parts that still have more work to be done and needed to be solved. Ideally, each time generating a new question, the content of the zine pages should be updated as well. The texts are currently working on the canvas, but not the image because of some difficulties working with the Google api. I kind of like the layout for now, actually. For further development, besides fixing the api workarounds, I am also thinking about adding other ways of interaction by taking the experience out from a screen to the physical world.</p>
+                <p>It is always learning through making. I had some time reviewing some javascript techniques and learning new ones including Jquery usage and some css tricks.</p>
+                <h4>tools and methods</h4>
+                <p>Language: HTML, CSS, javascript, Jquery.<br>Apis: <a href="https://opentdb.com/">Trivia api</a>, <a href="https://developers.google.com/custom-search/v1/overview">Google CSE epi</a>.<br></p>
+                <h4>screen record of project</h4>
+                <iframe src="https://drive.google.com/file/d/1Frw85ZAymWdK68ykJxJ5K91wJoYxjCE4/preview" width="718" height="414"></iframe>
+              </div>
+
+              <div class="parts">
+                <p>response to <a href="http://blogs.ischool.berkeley.edu/ict4se/files/2010/09/Prototypes_prototype.pdf">What do Prototypes Prototype?</a></p>
+                <div>
+                  <p class="quotes">“It is common practice to build prototypes in order to represent different states of an evolving design, and to explore options. However, since interactive systems are complex, it may be difficult or impossible to create prototypes of a whole design in the formative stages of a project.” (1)</p>
+                  <p class="thoughts">Prototyping in my mind is very much a critical making (what we read about last week on thinking+making) journey. When building something, everything before that was just a big chunk of “process,” but this thought of mine in the past certainly changed after I was introduced to ways of prototyping for interactive media art projects during my undergraduate studies (and definitely would be inspired more here at MDP). Prototyping is not just some kind of a test of a final product, but a cycle of reiterations that never lies a single straight line ahead; a system of roads that are diverted and joint, looped in cycles, and full of unexpected pathways. In fact, I can say from my experiences that prototypes can often lead a project to very different routes from what one expected to be a final.<br>In terms of building interactive systems, this writing reminds me of the very importance to make prototype(s) as stops in the process. It is helpful to stop and think about, if we are too indulged in the making process that we may have not given enough space and time for our critical thinking; or, are we thinking too much until the very last minute that whatever brilliant idea stuck in our heads does not get the chance to be realized?<br>To “stop” is actually to go!"</p>
+                </div>
+                <div>
+                  <p class="quotes">“This kind of portrayal of onscreen interface elements as rough and hand-drawn was used in order to focus design discussion on the overall features of a design rather than on specific details of look and feel or implementation (Wong, 1992). Ironically, while the design team understood the meaning of the hand-drawn graphics, other members of the organization became enamored with the sketchy style to the extent that they considered using it in the final artifact...This example shows how the effectiveness of some kinds of prototypes may be limited to a specific kind of audience.” (7)</p>
+                  <p class="thoughts">I think this again brings up my previous point of prototypes being not a messy, untraceable point of process to a final product, but a specific stage of effort going forward with critical making. The quote confirms that we should be aware that we are not prototyping merely for the end-vision, but more importantly, for the people along. This also helps us sort out the really important points to hit in creating prototypes before spending too much time only to be ineffective in collecting feedback. A thing about interactive projects is that to people who have a more limited knowledge of complex technology, it is often all the same, between 60% effort and 80% progress. This is dangerous in both directions of doing too much and doing too little, and could get us trapped in the mindset of prototyping for end-product even more, ending up with results “neither good enough nor bad enough to avoid misunderstandings” (11). In the modern world of visual-driven perception, it is important to look beyond that visual layer and provide the ‘right’ information to the user-testers. And it is in this notion where the prototype model really matters.</p>
+                </div>
+                <div>
+                  <p class="quotes">“since the prototype was to be shown to a broad audience, an integrated style of prototype was chosen, both to communicate the implementation point and to verify that the piles representation was practically feasible.” (13)</p>
+                  <p class="thoughts">From the many example prototypes shown in the writing, it is clear that different audiences have different expectations. Having a broad audience in this case is indeed chaotic, with the feeling of a need to produce a high quality and fidelity product at once to satisfy all. A large leap like that would once again trap us into prototyping for the sole purpose of a final delivery. Even for the finest thing, I do not think there is such a final version of that existing, because all things are prototypes with the hold of aroused questions that push itself and the designer(s) forward to the next ‘prototype.’ More so, following what the writing states: “Sometimes very simple representations make highly effective prototypes” (15), I do not think that integration with intersections of concepts and functions necessarily means more complexity—it means a field of broader purposes (at specific stages). It is the designers’ job to design an efficient, effective, and impactful experience, as “[p]rototypes themselves do not necessarily communicate their purpose” (15). I thank the writing for pointing this crucial perspective to me.</p>
+                </div>
+              </div>
+
+            </div>
+
+      <!-- week 2 -->
+            <div class="weeks">
+              <h1>WEEK 2</h1>
+
+              <div class="parts">
+                <p>3 interactive installation (in connection to my creative tech interests)</p>
+                <p><a href="http://www.notabenevisual.com/works/in-order-to-control">in order to control</a></p>
+                <p><a href="https://www.visualatelier8.com/art/narciss-artificial-intelligence-questions-human-self-awareness">narciss</a></p>
+                <p><a href="https://goodvertising.site/the-fun-theory/">the fun theory</a></p>
+              </div>
+
+              <div class="parts">
+                <p>diagrams</p>
+                <p>diagram—narciss</p>
+                <iframe src="https://drive.google.com/file/d/1QidOI25YLLezrI-Br2CsVDN71PPZ7QMh/preview" width="640" height="360"></iframe>
+                <p>diagram—the GEN-Zine<br>(1-2week mini project)</p>
+                <div style="text-align: center"><iframe src="https://drive.google.com/file/d/15e2sa4BVbhqnRzFG9SLd7gV1O-GDXXrD/preview" width="560" height="380"></iframe></div>
+              </div>
+
+              <div class="parts">
+                <p>response to <a href="https://aeon.co/essays/how-yuppies-hacked-the-original-hacker-ethos">The hacker hacked</a></p>
+                <div>
+                  <p class="quotes">“the hacker impulse expresses itself via a constellation of minor acts of insurrection, often undertaken by individuals, creatively disguised to deprive authorities of the opportunity to retaliate”</p>
+                  <p class="thoughts">I immediately connect this to the coding structure of web scraping, where there often has to be ‘sleep’ functions to temporarily pause the data-scraping process from a website, which could cause suspicion since the process is fast; also better not have many people in the same place scraping from a single source. In the age of data, we look at everything as resources out there that are either available to our hands or should be available, chunks of information that could be further repurposed. The hard part is always to find a middle ground, even with various licenses available. Some data is not meant to be publicly visible, but people just get smarter and better at finding loopholes in both technology designs and information regulations. Putting these adventures of findings as constellations of acts is kind of poetic, though.</p>
+                </div>
+                <div>
+                  <p class="quotes">“Each group defines itself against the other, settling into a stagnant trench warfare. The individual activists frequently end up demoralised, complaining within echo-chambers about their inability to impact ‘the system’. They build an identity based on a kind of downbeat martyrdom, keeping themselves afloat through a fetishised solidarity with others in the same position.”</p>
+                  <p class="thoughts">This is so true for other social events as well, especially the politics. And those individuals claim that they are individuals to combat the allegation of being blind followers with the ‘fetishised solidarity’ with others. They even take their acclaimed inability to fight with the systems and exaggerate it, somehow thinking this would legitimize this solidarity in the beliefs against the current.<br>This could be implying the phenomenon of ‘cultured young people’ in Taiwan where the word ‘culture’ here has to interestingly associate with both the subcultural hipster style and the current Taiwanese politics. In fact, more and more public workshops on ‘social hacking’ appear and are seemed to be led by those people. Whatever act in and out of itself could never step away from politics. From all of these we could also see hints of the practice of hacking growing, from a subculture to a slowly dominating culture.</p>
+                </div>
+                <div>
+                  <p class="quotes">“It thus becomes an assertion of individual defiance of social norms. The byproduct of such exploration is pragmatic knowledge, the disruption of standard patterns of thought, and also dealienation – you see what’s behind the interfaces that surround us, coming closer to the reality of our social world.”</p>
+                  <p class="thoughts">I think this brings to the discussion of the complicated definition of being prosocial or antisocial. Hacking as suggested by the article is about breaking standards to open accesses and therefore opportunities, which in traditional sense is considered anti-social for not following the preset norms. But when hacking is associated with the digital platform that is already open (still exclusive for those who do not have access to the internet and a device), it almost feels rational and unattackable to have things on the platform to be consistent in open access. Otherwise you should not host it on the free platform but another platform that aligns your values on the hackable and shareable open source. And because hacking could be for others and for more opportunities for the general public, it becomes prosocial. It is not essentially about a hacker’s personal leanings of whichever side, but more so about his/her/their standing point of view—the spirit of the ‘way of being.'</p>
+                </div>
+              </div>
+
+            </div>
+
+      <!-- week 1 -->
+            <div class="weeks">
+              <h1>WEEK 1</h1>
+
+              <div class="parts">
+                <p>3 less common creative technology tools:</p>
+                <p><a href="https://vcvrack.com/">vcv rack</a></p>
+                <p><a href="https://autodeskresearch.com/projects/dreamcatcher">dreamcatcher</a></p>
+                <p><a href="https://www.tinkamo.com/">tinkamo</a></p>
+              </div>
+
+              <div class="parts">
+                <p>3 creative projects of inspirations:</p>
+                <p><a href="https://www.dailytouslesjours.com/en/work/air">Amateur Intelligence Radio (AIR): A radio show hosted by a building</a></p>
+                <p><a href="https://ip-poetry.findelmundo.com.ar/index.html">the ip poetry project</a></p>
+                <p><a href="https://www.storynest.com/pix/_4proj/ds_bloodlines/p0.php?lang=en">bloodlines</a></p>
+              </div>
+
+              <div class="parts">
+                <p>response to <a href="http://opendesignnow.org/index.html%3Fp=434.html">CRITICAL MAKING</a></p>
+                <div>
+                  <p class="quotes">“Rather than just bemoaning the restrictions placed on users by institutionalized technological systems, engaged makers have the increasing ability and opportunity to constitute and construct alternatives.”</p>
+                  <p class="thoughts">One has to engage in order to be engaged. Here I am referring to which I believe is a core spirit of social practice/socially engaged art. Like critical making, to engage “viewers” and make them into “participants,” is to transfer the ownership of the work, to extend both the conceptual and physical processes of the work, and to reevaluate the values of work (in this case, being put in the museum/getting design awards is not the final and the most honorable ending). And to turn “participants” into “makers,” is to execute what the article suggests as “material interventions,” where each intervention could provide a different setting and therefore a different version of a project; projects become reusable components of thinking and building, a kit for unlimited critical making.</p>
+                </div>
+                <div>
+                  <p class="quotes">“The ultimate goal of critical making experiences is not the evocative or pedagogical object intended to be experienced by others, but rather the creation of novel understandings by the makers themselves...The ‘objects’ of critical making are intended to be shared making experiences, curated through both material and textual instructions.”</p>
+                  <p class="thoughts">The challenging part of creating something to be outputted to the society is not the process of itself, nor is it the process of outputting. It is the part where the receiver receives that creates the most unexpected and sometimes problematic results/reactions. Artworks, products, or something else, how things are taken and used do not always align with the intended purposes and actual functions of how they should be. Applying this thought onto the quote, we want objects to have both shared experiences and the ability to share experiences. To achieve that, critical makers will have to first convince themselves of their criticality even before engaging with others, otherwise as Marshall McLuhan ironically stated: “You must talk to the media, not to the programmer. To talk to the programmer is like complaining to a hot dog vendor at a ballpark about how badly your favorite team is playing.” That’s how “material and textual instructions” could be prepared enough to then evolve into something that has the capacity to be shared.</p>
+                </div>
+                <div>
+                  <p class="quotes">“the ‘push-back’ of the physical electronics – the resistance of reality to our attempts to contain it – is therefore more present...engender a more invested and involved participant”</p>
+                  <p class="thoughts">As a creative technologist with the background of interactive media art, I resonate with this sentence as it has always been a crucial concern regarding how deep the audience engages with my work. Adding a physical element to a work may add the incentive for a first interaction between the audience and the work, which could be a key to inspire them to then critically think about it afterwards. Besides the stimulation and fortified impression of having a multi-sensory experience, still, we need to jump from just the oohs and aahs of the magic of new technologies, or at least use it as a base, to then introduce to the general people, including ourselves, the possibility of critical making. The article brought together the often separated social aspect and technical aspect of critiquing the world, and asked us, with the two combined, to become more “invested and involved” as we all could be critical makers.</p>
+                </div>
+              </div>
+
+            </div>
+
+      </div>
+
     <div>
+
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
