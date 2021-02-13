@@ -10,6 +10,73 @@
     <p id="pageDescription">a documentation site for <b>CREATIVE TECHNOLOGY</b> course <br>at <b>Media Design Practices, ArtCenter College of Design.</b></p>
 
     <div class="wrapper">
+<!-- add: you're viewing spring2021, jump to fall2020. And vice versa.  -->
+
+<!-- week 3 -->
+      <div class="weeks">
+        <h1>WEEK 3</h1>
+
+        <div class="parts">
+          <p>project documentation (continued): a system of chain of events</p>
+          <p>see previous weeks for building stages of this project</p>
+          <br>
+          <h3>a wonderful workday</h3>
+          <iframe src="https://drive.google.com/file/d/1fSXo4i7FgLmPOpi_hE1yML2VmM0RtDPX/preview" width="854" height="480"></iframe>
+          <p>collaborators:  Iris Yuanyuan Gong, Jensen Gu</p>
+          <br>
+          <p>This is a temporarily final render of what a wonderful workday looks like...</p>
+          <iframe src="https://drive.google.com/file/d/1ok9Th235vIwPzVM-7adttcFM9ehdGoX6/preview" width="820" height="380"></iframe>
+          <p>(diagram v.3)</p>
+          <br>
+          <div style="text-align: center"><p>storytime~~~</p></div>
+          <p><i>Jensen loves to use Discord, he is the imaginery team leader for an imaginery team project. He would like every team member to use Discord, too! For every team meeting, he would have his google calendar to send a message to our team channel on Discord to hover everyone here.</i></p>
+          <p><i>Iris agrees to use Discord for work. But secretly, she likes Gmail more! The feeling of having an exploding inbox......</i></p>
+          <p><i>Shiny involuntarily uses Discord because of Jensen's request. She prefers using Slack and having everything organized there.</i></p>
+          <div style="text-align: center"><p>how could this work out happily for everyone???</p></div>
+          <br>
+          <p>Firstly, each of us three has to respectively connect our own preferred platforms with Discord. <br>In that way, we could be notified of and not miss any message on Discord, and get onto Discord when necessary, for example, when having a team meeting.</p>
+          <p>For me, I connected (my preferred) Slack with (our team) Discord with <a href="https://zapier.com/apps/discord/integrations/slack">Zapier's Discord+Slack Integrations</a>, specifically using the function "Send Slack channel messages for new Discord channel messages"</p>
+          <p>When it's meeting time, I will receive a notification on my personal Slack workspace, saying that I got a message on Discord team channel which should read "Team meeting in 10 minutes."</p>
+          <iframe src="https://drive.google.com/file/d/1i3nRQiBQLnBPq-FPrhQBhfTUXZH9Cg3Z/preview" width="854" height="480"></iframe>
+          <p>(with realtime lags)</p>
+          <p>Am I happy? Well, yes! I can minimize the softwares/apps open at the same time. I can stay on Slack and only have to hop onto Discord at designated times.</p>
+          <br>
+          <p>During team meetings on Discord, all the messages generated on Discord would be sent to my Slack as well for future references. (In that case, each of us could customize what types of messages to send, whether they're texts, links, or files.)</p>
+          <div style="text-align: center"><p>and because we are all creative souls</p></div>
+          <p>we would like to put our work messages to creative use, something that makes our day even more wonderful!</p>
+          <div style="text-align: center"><p>how could this work out happily for everyone???</p></div>
+          <p>Using <a href="https://zapier.com/apps/discord/integrations/google-drive">Zapier's Discord+Google Drive integration</a>, all of our messages would be uploaded to Google Drive as separate files.</p>
+          <p>That's when <a href="https://developers.google.com/drive/api/v3/reference/files/list">Google Doc API</a> is put to use, getting all drive files of messages into a JSON database.</p>
+          <p>Then, we could easily use the data from the API, in this case the files of our Discord messages, to create things on webpage. There are a lot of data manipulation using javascript to turn fetched responses from api are into the forms we need, including separating messages by their different types, reformatting image links, etc.</p>
+          <p>The reformatted data would be made into visuals</p>
+          <iframe src="https://drive.google.com/file/d/1qegpl2H1WgzMhWt1WzcQxeFaewMrHxQE/preview" width="854" height="480"></iframe>
+          <p>You could find <a href="https://github.com/Shiny-Niu-Wu/ACCD-CreativeTechnology/tree/master/Rube%20Goldberg%20Machine%20Project">the source code here on my github</a></p>
+          <p>(word sphere code revised from and courtesy to <a href="https://www.openprocessing.org/sketch/1004867">Che Yu Wu</a>)</p>
+          <div style="text-align: center"><p>wonderful!</p></div>
+          <div style="text-align: center"><p>wonderful way to end a work day, and connect all remote pals!</p></div>
+          <br>
+          <p>issues: there is a cross-origin issue when trying to use the reformatted links of images (image messages would be read as links when fetching api). I have successfully reformatted the image links ready to be put as src for newly created img tags. However, I later found that the links simply won't work themselves, so it's not a problem of data manipulation from my end.</p>
+          <iframe src="https://drive.google.com/file/d/1b3kfy3euANUYc3HKF4cW77BAIj6zpqWi/preview" width="820" height="220"></iframe>
+          <p>This issue is to be resolved when possible.</p>
+          <br>
+          <p>(rough) Distribution of Work:
+            <br>Shiny: data manipulation for fetched responses from google drive api, combine data with word sphere, build website, general debugging
+            <br>Iris: google drive api (from discord to google drive, then test it on local website), general debugging
+            <br>Jensen: revise word sphere visual code, production for documentation video
+            <br>all: brainstorm, diagram, software integrations, experiments, help each other
+          </p>
+        </div>
+
+        <div class="parts">
+          <p>picked quotes from<a href="#"><i>source</i></a> by author<br>
+            <a href="#"><i>source</i></a> by author
+          </p>
+          <p class="quotes">quote</p>
+          <p class="quotes">quote</p>
+          <p class="quotes">quote</p>
+        </div>
+
+      </div>
 
 <!-- week 2 -->
       <div class="weeks">
@@ -23,7 +90,7 @@
           <p>scenario: Another day of work-from-home has started, but everyone could instantly feel connected with the chains between different message platform. Never miss a meeting! The work messages of the day would be transformed into beautiful web paintings for the work team as a daily ritual, and an incentive to work hard and happy everyday.</p>
           <p>(possibly) using: ifttt, Discord.js</p>
           <br>
-          <p>[updating......]</p>
+          <p>(documentation continued)</p>
         </div>
 
       </div>
